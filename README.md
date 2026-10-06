@@ -131,16 +131,16 @@ espacio para obras futuras y no contiene enlaces vacíos.
 
 La galería incluye ahora también Legado de Sangre (logo) y Arte personal
 (fanart de Sludge Life): 236 imágenes fuente representadas en 43 entradas.
-Los dos nuevos PNG se conservan sin modificaciones. Las imágenes de la
+Los dos nuevos dibujos también incluyen la marca de agua. Las imágenes de la
 portada se cambian en la sección art de index.html; sus enlaces abren el
 filtro correspondiente de la galería.
 
 ## Marcas de agua y derechos
 
-Las imágenes de arte, sus miniaturas y las portadas de las jams contienen
+Las imágenes de la galería de arte y sus miniaturas contienen
 la marca @JDashe integrada conservando la opacidad del PNG original.
 La marca cubre el lienzo completo y se repite en las láminas alargadas. Las imágenes se conservan
-en sus dimensiones actuales. Los originales sin marca no están en este paquete.
+en sus dimensiones actuales. Las portadas de las game jams se publican sin marca de agua.
 El retrato, el CV y los elementos de identidad de la web no se han marcado.
 Consulta RIGHTS.md para el aviso de derechos de las obras y aportaciones.
 La marca identifica la autoría; no impide capturas ni garantiza evitar copias.
@@ -155,3 +155,6 @@ La cabecera presenta botones destacados en escritorio. Hasta 1050 px utiliza
 un menú modal lateral con fondo oscurecido. Se cierra al pulsar un enlace,
 la X, el exterior o Escape. Respeta la preferencia de movimiento reducido,
 impide desplazar el fondo y devuelve el foco al botón de apertura.
+
+Los botones Arte y Game jams de la cabecera abren art.html y jams.html,
+respectivamente, tanto en escritorio como en el menú móvil.
