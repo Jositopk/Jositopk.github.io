@@ -62,7 +62,20 @@
           </option>
         </select>
       </label>
+      <button class="menu-toggle" type="button" aria-controls="mobile-menu"
+        aria-expanded="false" aria-haspopup="dialog" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </header>
+    <!-- El diálogo bloquea la interacción con el fondo mientras está abierto. -->
+    <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="mobile-menu-title">
+      <div class="mobile-menu-top">
+        <h2 id="mobile-menu-title" data-t="menuTitle">Navegación</h2>
+        <button class="menu-close" type="button" aria-label="Cerrar menú">×</button>
+      </div>
+      <nav class="mobile-menu-links" aria-label="Navegación móvil"></nav>
+      <p class="mobile-menu-note">JM / PORTFOLIO</p>
+    </dialog>
     <main id="main">
       <section class="wrap jams-hero gallery-hero">
         <a class="back-link" href="index.html#art" data-t="backPortfolio">

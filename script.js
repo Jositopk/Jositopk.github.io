@@ -12,6 +12,8 @@ const isJams = document.body.dataset.page === "jams";
 // Actualiza los textos y genera las tarjetas según el idioma.
 function render() {
   const t = translations[lang];
+  document.querySelector(".menu-toggle")?.setAttribute("aria-label", t.menuOpen);
+  document.querySelector(".menu-close")?.setAttribute("aria-label", t.menuClose);
   document.documentElement.lang = lang;
   document.querySelector("#language").value = lang;
   document.querySelectorAll("[data-t]").forEach((el) => (el.innerHTML = t[el.dataset.t]));
@@ -183,4 +185,63 @@ cvDialog?.addEventListener("close", () => {
   if (!document.querySelector("dialog[open]"))
     document.body.classList.remove("modal-open");
   cvTrigger.focus({ preventScroll: true });
+});
+
+// Menú móvil: apertura lateral, fondo modal y retorno del foco.
+const mobileMenu = document.querySelector("#mobile-menu");
+const menuToggle = document.querySelector(".menu-toggle");
+const menuLinks = document.querySelector(".mobile-menu-links");
+const mobileViewport = window.matchMedia("(max-width: 1050px)");
+let menuCloseTimer;
+
+function openMobileMenu() {
+  if (mobileMenu.open || !mobileViewport.matches) return;
+  clearTimeout(menuCloseTimer);
+  // Copia los enlaces ya traducidos y con el idioma conservado en sus URLs.
+  menuLinks.innerHTML = document.querySelector("header nav").innerHTML;
+  menuLinks.setAttribute("aria-label", translations[lang].menuTitle);
+  mobileMenu.showModal();
+  menuToggle.setAttribute("aria-expanded", "true");
+  document.body.classList.add("menu-open");
+  requestAnimationFrame(() => {
+    if (mobileMenu.open) mobileMenu.classList.add("is-visible");
+  });
+}
+
+function closeMobileMenu(immediate = false) {
+  if (!mobileMenu.open) return;
+  clearTimeout(menuCloseTimer);
+  mobileMenu.classList.remove("is-visible");
+  menuToggle.setAttribute("aria-expanded", "false");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (immediate || reducedMotion) mobileMenu.close();
+  else menuCloseTimer = setTimeout(() => mobileMenu.close(), 220);
+}
+
+menuToggle.addEventListener("click", openMobileMenu);
+mobileMenu.querySelector(".menu-close").addEventListener("click", () => closeMobileMenu());
+menuLinks.addEventListener("click", (event) => {
+  if (event.target.closest("a")) closeMobileMenu(true);
+});
+mobileMenu.addEventListener("click", (event) => {
+  if (event.target !== mobileMenu) return;
+  const bounds = mobileMenu.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) {
+    closeMobileMenu();
+  }
+});
+mobileMenu.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeMobileMenu();
+});
+mobileMenu.addEventListener("close", () => {
+  clearTimeout(menuCloseTimer);
+  mobileMenu.classList.remove("is-visible");
+  document.body.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  if (mobileViewport.matches) menuToggle.focus({preventScroll: true});
+});
+mobileViewport.addEventListener("change", (event) => {
+  if (!event.matches) closeMobileMenu(true);
 });

@@ -435,3 +435,15 @@ translations.en.rightsNotice =
   "© 2026 Jose Manuel Pastor González. All rights reserved in my original work " +
   "and contributions. Reuse requires permission, except where permitted by law. " +
   "Third-party elements belong to their respective rights holders.";
+
+// Navegación adaptable.
+Object.assign(translations.es, {
+  menuTitle: "Navegación",
+  menuOpen: "Abrir menú",
+  menuClose: "Cerrar menú",
+});
+Object.assign(translations.en, {
+  menuTitle: "Navigation",
+  menuOpen: "Open menu",
+  menuClose: "Close menu",
+});

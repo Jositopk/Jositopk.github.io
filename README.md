@@ -144,3 +144,14 @@ en sus dimensiones actuales. Los originales sin marca no están en este paquete.
 El retrato, el CV y los elementos de identidad de la web no se han marcado.
 Consulta RIGHTS.md para el aviso de derechos de las obras y aportaciones.
 La marca identifica la autoría; no impide capturas ni garantiza evitar copias.
+
+## Tipografía y navegación
+
+Space Mono se incluye localmente en pesos 400 y 700, junto con su licencia
+SIL Open Font License en assets/fonts/OFL-SpaceMono.txt. No requiere conexión
+a Google Fonts. Fuente: https://fonts.google.com/specimen/Space+Mono
+
+La cabecera presenta botones destacados en escritorio. Hasta 1050 px utiliza
+un menú modal lateral con fondo oscurecido. Se cierra al pulsar un enlace,
+la X, el exterior o Escape. Respeta la preferencia de movimiento reducido,
+impide desplazar el fondo y devuelve el foco al botón de apertura.

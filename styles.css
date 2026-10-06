@@ -1,3 +1,18 @@
+/* Fuente local gratuita; licencia en assets/fonts/OFL-SpaceMono.txt. */
+@font-face {
+  font-family: "Space Mono";
+  src: url("assets/fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("assets/fonts/SpaceMono-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 /* Paleta, tipografía y estilos base */
 :root {
   --bg: #243341;
@@ -7,7 +22,7 @@
   --text: #f5f5ed;
   --muted: #b9c0c5;
   --line: #54616a;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Space Mono", monospace;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -99,7 +114,7 @@ select {
   padding-bottom: 54px;
 }
 .eyebrow {
-  font-family: "Courier New", monospace;
+  font-family: "Space Mono", monospace;
   font-size: 13px;
   letter-spacing: 0.06em;
   line-height: 1.5;
@@ -1310,4 +1325,157 @@ footer .rights-notice {
   font-size: 12px;
   line-height: 1.6;
   color: var(--muted);
+}
+
+/* Botones de navegación y menú lateral móvil. */
+header {
+  gap: 22px;
+  z-index: 20;
+}
+header nav {
+  gap: 8px;
+}
+header nav a {
+  padding: 11px 13px;
+  border: 1px solid var(--olive);
+  border-radius: 4px;
+  background: var(--deep);
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+header nav a:hover,
+header nav a[aria-current="page"] {
+  background: var(--lime);
+  color: var(--deep);
+}
+.menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 11px;
+  flex-shrink: 0;
+  border: 1px solid var(--lime);
+  border-radius: 4px;
+  background: var(--deep);
+  color: var(--lime);
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 4px 0;
+  background: currentColor;
+}
+body.menu-open {
+  overflow: hidden;
+}
+.mobile-menu {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(360px, 86vw);
+  max-width: 86vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 26px 22px;
+  border: 0;
+  border-left: 1px solid var(--olive);
+  background: var(--deep);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+.mobile-menu.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+.mobile-menu::backdrop {
+  background: rgb(0 0 0 / 0%);
+  transition: background 220ms ease;
+}
+.mobile-menu.is-visible::backdrop {
+  background: rgb(0 0 0 / 68%);
+}
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.mobile-menu-top h2 {
+  font-size: 19px;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+.menu-close {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--lime);
+  font-size: 28px;
+  cursor: pointer;
+}
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 36px 0;
+  padding: 0;
+  gap: 12px;
+}
+.mobile-menu-links a {
+  display: block;
+  padding: 16px;
+  border: 1px solid var(--olive);
+  border-radius: 4px;
+  color: var(--lime);
+  background: var(--bg);
+  font-size: 16px;
+  font-weight: 700;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a[aria-current="page"] {
+  background: var(--lime);
+  color: var(--deep);
+}
+.mobile-menu .mobile-menu-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+@media (max-width: 1050px) {
+  header {
+    height: 78px;
+    min-height: 78px;
+    flex-wrap: nowrap;
+    padding: 12px 5%;
+    gap: 12px;
+  }
+  header nav {
+    display: none;
+  }
+  header .language {
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+  }
+  header select {
+    max-width: 135px;
+    font-size: 12px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .mobile-menu,
+  .mobile-menu::backdrop {
+    transition: none;
+  }
 }
