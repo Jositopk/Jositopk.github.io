@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#243341">
+    <meta
+      name="description"
+      content="Game jams de Jose Manuel Pastor González: BandBang, Time Bender y mis aportaciones de arte, sonido y código."
+    >
+    <title>
+      Arte 2D — José Manuel
+    </title>
+    <link rel="icon" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="content.js" defer>
+    </script>
+    <script src="art-data.js" defer>
+    </script>
+    <script src="gallery.js" defer>
+    </script>
+    <script src="script.js" defer>
+    </script>
+  </head>
+  <body data-page="art">
+    <a class="skip" href="#main" data-t="skip">
+      Saltar al contenido
+    </a>
+    <!-- Navegación e idioma -->
+    <header>
+      <a class="brand" href="index.html" aria-label="José Manuel — Inicio">
+        <img src="assets/logo.png" alt="" width="40" height="40">
+        JM
+      </a>
+      <nav aria-label="Principal">
+        <a href="index.html#work" data-t="work">
+          Proyectos
+        </a>
+        <a href="jams.html" data-t="jams">
+          Game jams
+        </a>
+        <a href="art.html" aria-current="page" data-t="art">
+          Arte
+        </a>
+        <a href="index.html#sound" data-t="sound">
+          Música
+        </a>
+        <a href="index.html#about" data-t="about">
+          Sobre mí
+        </a>
+      </nav>
+      <label class="language">
+        <span class="sr-only" data-t="language">
+          Idioma
+        </span>
+        <select id="language">
+          <option value="es">
+            ES · Español
+          </option>
+          <option value="en">
+            EN · English
+          </option>
+        </select>
+      </label>
+    </header>
+    <main id="main">
+      <section class="wrap jams-hero gallery-hero">
+        <a class="back-link" href="index.html#art" data-t="backPortfolio">
+          Volver al portfolio
+        </a>
+        <p class="eyebrow" data-t="galleryArchive">
+          ARCHIVO / ARTE 2D
+        </p>
+        <h1 data-t="galleryTitle">
+          Del boceto
+          <br>
+          al juego.
+        </h1>
+        <p class="gallery-intro" data-t="galleryIntro">
+          Personajes, escenarios y animación. Mi arte 2D, proyecto a proyecto.
+        </p>
+        <p data-t="galleryHint">
+          Pulsa una obra para ampliarla.
+        </p>
+        <div
+          id="art-filters"
+          class="art-filters"
+          role="group"
+          aria-label="Proyectos / Projects"
+        >
+        </div>
+      </section>
+      <div id="art-gallery" class="wrap">
+      </div>
+      <noscript>
+        <p class="wrap">
+          Activa JavaScript para ver la galería. / Enable JavaScript to view the gallery.
+        </p>
+      </noscript>
+      <dialog id="art-viewer" class="art-viewer" aria-labelledby="art-caption">
+        <div class="viewer-toolbar">
+          <h2 id="art-caption">
+          </h2>
+          <button id="art-close" type="button" data-t="galleryClose">
+            Cerrar visor
+          </button>
+        </div>
+        <div class="viewer-stage">
+          <img id="art-image" alt="">
+        </div>
+        <div class="viewer-actions">
+          <button id="art-prev" type="button" data-t="galleryPrev">
+            Anterior
+          </button>
+          <a id="art-full" target="_blank" rel="noopener" data-t="galleryFull">
+            Abrir imagen completa ↗
+          </a>
+          <button id="art-next" type="button" data-t="galleryNext">
+            Siguiente
+          </button>
+        </div>
+      </dialog>
+      <!-- Enlaces sociales -->
+      <footer class="wrap">
+        <a class="brand" href="index.html" aria-label="José Manuel">
+          <img src="assets/logo.png" alt="" width="40" height="40">
+          JM
+        </a>
+        <p data-t="footer">
+          Programar, crear y seguir aprendiendo.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/Jositopk" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jose-manuel-pastor-gonzález-b341253b3/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <a href="#" data-t="top">
+          Volver arriba
+        </a>
+        <p class="rights-notice" data-t="rightsNotice">
+          © 2026 Jose Manuel Pastor González. Derechos reservados sobre mis obras
+          y aportaciones. No se autoriza su reutilización sin permiso, salvo los
+          usos permitidos por la ley. Los elementos de terceros pertenecen a sus titulares.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

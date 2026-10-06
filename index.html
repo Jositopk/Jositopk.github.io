@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#243341">
+    <meta
+      name="description"
+      content="Jose Manuel Pastor González: videojuegos, arte 2D y 3D y composición musical. Proyectos y game jams."
+    >
+    <title>
+      Jose Manuel Pastor González — Portfolio
+    </title>
+    <link rel="icon" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="content.js" defer>
+    </script>
+    <script src="script.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main" data-t="skip">
+      Saltar al contenido
+    </a>
+    <!-- Navegación e idioma -->
+    <header>
+      <a class="brand" href="index.html" aria-label="José Manuel — Inicio">
+        <img src="assets/logo.png" alt="" width="2048" height="2048">
+        JM
+      </a>
+      <nav aria-label="Principal">
+        <a href="#work" data-t="work">
+          Proyectos
+        </a>
+        <a href="jams.html" data-t="jams">
+          Game jams
+        </a>
+        <a href="#art" data-t="art">
+          Arte
+        </a>
+        <a href="#sound" data-t="sound">
+          Música
+        </a>
+        <a href="#about" data-t="about">
+          Sobre mí
+        </a>
+      </nav>
+      <label class="language">
+        <span class="sr-only" data-t="language">
+          Idioma
+        </span>
+        <select id="language">
+          <option value="es">
+            ES · Español
+          </option>
+          <option value="en">
+            EN · English
+          </option>
+        </select>
+      </label>
+    </header>
+    <main id="main">
+      <!-- Presentación -->
+      <section class="hero wrap">
+        <div class="eyebrow">
+          <span data-t="portfolio">
+            DESARROLLO DE VIDEOJUEGOS · ARTE · MÚSICA
+          </span>
+          <span>
+            MADRID, ES
+          </span>
+        </div>
+        <h1>
+          JOSÉ
+          <br>
+          <span>
+            MANUEL.
+          </span>
+        </h1>
+        <div class="hero-bottom">
+          <p data-t="intro">
+            Programo. Dibujo.
+            <br>
+            Compongo.
+          </p>
+          <div class="hero-note">
+            <p data-t="heroNote">
+              Creo videojuegos desde tres frentes:
+              <br>
+              su lógica, su identidad visual y su música.
+            </p>
+            <a class="solid" href="#work" data-t="explore">
+              Descubre mi trabajo
+            </a>
+          </div>
+          <img
+            class="avatar"
+            src="assets/logo.png"
+            alt="Ilustración del avatar de José Manuel"
+            width="2048"
+            height="2048"
+          >
+        </div>
+      </section>
+      <div class="discipline">
+        <span data-t="disc">
+          VIDEOJUEGOS / PROGRAMACIÓN / ARTE 2D &amp; 3D / MÚSICA
+        </span>
+      </div>
+      <!-- Proyectos y acceso a game jams -->
+      <section class="wrap section" id="work">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-t="selected">
+              01 / SELECCIÓN DE TRABAJOS
+            </span>
+            <h2 data-t="work">
+              Proyectos
+            </h2>
+          </div>
+          <p data-t="workNote">
+            Qué hicimos, cómo funciona
+            <br>
+            y qué aporté yo.
+          </p>
+        </div>
+        <div id="projects" class="project-grid">
+        </div>
+        <a class="jam-feature" href="jams.html">
+          <div>
+            <span class="eyebrow" data-t="jamFeatureLabel">
+              PROTOTIPOS / COLABORACIÓN / GAME JAMS
+            </span>
+            <h3 data-t="jamFeatureTitle">
+              Un equipo.
+              <br>
+              Un plazo.
+              <br>
+              Un juego.
+            </h3>
+            <span class="text-link" data-t="seeJams">
+              Descubre mis game jams
+            </span>
+          </div>
+          <img src="assets/banner.png" alt="" loading="lazy" width="2048" height="1152">
+        </a>
+      </section>
+      <!-- Arte -->
+      <section class="art-section" id="art">
+        <div class="wrap section">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow" data-t="visual">
+                02 / EXPLORACIÓN VISUAL
+              </span>
+              <h2 data-t="artTitle">
+                Dar forma
+                <br>
+                a una idea.
+              </h2>
+            </div>
+            <p data-t="artNote">
+              Del dibujo al volumen: una mirada
+              <br>
+              a mi trabajo en arte 2D y 3D.
+            </p>
+          </div>
+          <div class="art-showcases">
+            <!-- Selección 2D: cada imagen enlaza con su proyecto. -->
+            <div class="art-showcase">
+              <span class="large-index">
+                2D
+              </span>
+              <h3 data-t="illustration">
+                Ilustración &amp; arte digital
+              </h3>
+              <p data-t="gallerySummary">
+                Personajes, mundos e ideas propias. Del primer trazo al último fotograma.
+              </p>
+              <div class="art-ribbon">
+                <a href="art.html#personal" class="ribbon-panel ribbon-fanart">
+                  <img
+                    src="assets/art/sludgelife-fanart.png"
+                    alt="Sludge Life · Fanart"
+                    loading="lazy"
+                    width="2048"
+                    height="1423"
+                  >
+                </a>
+                <a href="art.html#legado" class="ribbon-panel ribbon-logo">
+                  <img
+                    src="assets/art/legado-logo.png"
+                    alt="Legado de Sangre · Logo"
+                    loading="lazy"
+                    width="2000"
+                    height="2000"
+                  >
+                </a>
+                <a href="art.html#nordico" class="ribbon-panel ribbon-character">
+                  <img
+                    src="assets/art/nordico-final.webp"
+                    alt="Nórdico"
+                    loading="lazy"
+                    width="1520"
+                    height="1640"
+                  >
+                </a>
+                <a href="art.html#bandbang" class="ribbon-panel ribbon-bandbang">
+                  <img
+                    src="assets/art/bandbang-teacher.webp"
+                    alt="BandBang · Teacher"
+                    loading="lazy"
+                    width="786"
+                    height="2400"
+                  >
+                </a>
+              </div>
+              <a class="art-explore" href="art.html" data-t="galleryLink">
+                Explorar mi arte 2D ↗
+              </a>
+            </div>
+            <!-- Mismo formato para las futuras obras 3D. -->
+            <div class="art-showcase">
+              <span class="large-index">
+                3D
+              </span>
+              <h3 data-t="modeling">
+                Modelado &amp; escenas
+              </h3>
+              <p data-t="art3DSummary">
+                Otra dimensión para mis ideas. Selección de obras próximamente.
+              </p>
+              <div class="art-ribbon art-ribbon-pending" aria-hidden="true">
+                <div class="ribbon-panel">
+                  <span>
+                    01
+                  </span>
+                </div>
+                <div class="ribbon-panel">
+                  <span>
+                    02
+                  </span>
+                </div>
+                <div class="ribbon-panel">
+                  <span>
+                    03
+                  </span>
+                </div>
+                <div class="ribbon-panel">
+                  <span>
+                    04
+                  </span>
+                </div>
+              </div>
+              <p class="art-explore" data-t="art3DPending">
+                Galería 3D · Próximamente
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Música -->
+      <section class="wrap section" id="sound">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-t="audio">
+              03 / UNIVERSO SONORO
+            </span>
+            <h2 data-t="soundTitle">
+              Ponerle
+              <br>
+              sonido.
+            </h2>
+          </div>
+          <p data-t="soundNote">
+            Composiciones para dar ritmo al juego
+            <br>
+            y acompañar lo que ocurre en pantalla.
+          </p>
+        </div>
+        <div class="sound-list">
+          <div>
+            <span class="track-no">
+              01
+            </span>
+            <div>
+              <h3>
+                Legado de Sangre
+              </h3>
+              <p data-t="soundtrack">
+                Composición para videojuego · Survival horror
+              </p>
+            </div>
+            <span class="pending" data-t="audioPending">
+              Audio próximamente
+            </span>
+          </div>
+          <div>
+            <span class="track-no">
+              02
+            </span>
+            <div>
+              <h3>
+                Dar la nota
+              </h3>
+              <p data-t="jam">
+                Composición para game jam · GameJam 8 de Game Scholars
+              </p>
+            </div>
+            <span class="pending" data-t="audioPending">
+              Audio próximamente
+            </span>
+          </div>
+        </div>
+      </section>
+      <!-- Sobre mí, aptitudes y CV -->
+      <section class="about-section" id="about">
+        <div class="wrap section">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow" data-t="person">
+                04 / DETRÁS DEL TRABAJO
+              </span>
+              <h2 data-t="aboutTitle">
+                Una idea.
+                <br>
+                Varias formas
+                <br>
+                de darle vida.
+              </h2>
+            </div>
+            <span class="eyebrow">
+              JOSÉ MANUEL / JDASHE
+            </span>
+          </div>
+          <div class="about-grid">
+            <figure class="portrait">
+              <img
+                src="assets/jose-manuel.jpg"
+                alt="Retrato de José Manuel"
+                data-alt="portraitAlt"
+                loading="lazy"
+                width="1360"
+                height="2048"
+              >
+              <figcaption>
+                JOSE MANUEL PASTOR GONZÁLEZ
+              </figcaption>
+            </figure>
+            <div class="bio">
+              <p class="lead" data-t="bio">
+                Soy Jose Manuel Pastor González. Estudio el doble grado en Diseño y
+                Desarrollo de Videojuegos e Ingeniería de Computadores en la Universidad
+                Rey Juan Carlos.
+              </p>
+              <p data-t="bio2">
+                En mis proyectos he pasado del comportamiento de los enemigos a la
+                ilustración y la banda sonora. Trabajar en esas tres áreas me ayuda a
+                conectar las decisiones técnicas con lo que el jugador ve, escucha y hace.
+                Me gusta construir en equipo y entender cómo encaja mi aportación en el
+                conjunto.
+              </p>
+              <div class="skill-groups">
+                <section>
+                  <h3 data-t="skillsDev">
+                    Desarrollo &amp; tecnología
+                  </h3>
+                  <div class="skills">
+                    <span>
+                      Unity
+                    </span>
+                    <span>
+                      C#
+                    </span>
+                    <span>
+                      C / C++
+                    </span>
+                    <span>
+                      Python
+                    </span>
+                    <span>
+                      OpenGL
+                    </span>
+                    <span>
+                      CUDA
+                    </span>
+                    <span data-t="skillAI">
+                      Inteligencia artificial
+                    </span>
+                    <span data-t="skillOptimization">
+                      Optimización del rendimiento
+                    </span>
+                    <span data-t="skillVR">
+                      Realidad virtual
+                    </span>
+                    <span data-t="skillAR">
+                      Realidad aumentada
+                    </span>
+                  </div>
+                </section>
+                <section>
+                  <h3 data-t="skillsCreative">
+                    Arte &amp; sonido
+                  </h3>
+                  <div class="skills">
+                    <span data-t="skillArt2D">
+                      Arte 2D
+                    </span>
+                    <span data-t="skillArt3D">
+                      Arte 3D
+                    </span>
+                    <span data-t="skillMusic">
+                      Composición musical
+                    </span>
+                    <span data-t="skillSound">
+                      Diseño de sonido
+                    </span>
+                    <span>
+                      GarageBand
+                    </span>
+                  </div>
+                </section>
+                <section>
+                  <h3 data-t="skillsTeam">
+                    Colaboración &amp; metodología
+                  </h3>
+                  <div class="skills">
+                    <span>
+                      Git / GitHub
+                    </span>
+                    <span>
+                      Jira
+                    </span>
+                    <span>
+                      Scrum
+                    </span>
+                    <span data-t="skillTeamwork">
+                      Trabajo en equipo
+                    </span>
+                    <span data-t="skillProblemSolving">
+                      Resolución de problemas
+                    </span>
+                  </div>
+                </section>
+              </div>
+              <div class="bio-bottom">
+                <span>
+                  URJC
+                </span>
+                <span data-t="degree">
+                  Videojuegos + Ingeniería de Computadores
+                </span>
+              </div>
+              <div class="cv-actions">
+                <button
+                  class="solid"
+                  id="view-cv"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-controls="cv-dialog"
+                  data-t="viewCV"
+                >
+                  Ver CV
+                </button>
+                <a
+                  class="outline-link"
+                  href="assets/JoseManuelPastor_CV_Sept2026.pdf"
+                  download="JoseManuelPastor_CV_Sept2026.pdf"
+                  data-t="downloadCV"
+                >
+                  Descargar CV
+                </a>
+              </div>
+              <div class="profile-links">
+                <a
+                  class="outline-link"
+                  href="https://jositopk.itch.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-t="itchProfile"
+                >
+                  Mi perfil en itch.io
+                </a>
+                <a
+                  class="outline-link"
+                  href="https://github.com/Jositopk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+                <a
+                  class="outline-link"
+                  href="https://www.linkedin.com/in/jose-manuel-pastor-gonzález-b341253b3/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Enlaces sociales -->
+      <footer class="wrap">
+        <a class="brand" href="index.html" aria-label="José Manuel">
+          <img src="assets/logo.png" alt="" width="2048" height="2048">
+          JM
+        </a>
+        <p data-t="footer">
+          Programar, crear y seguir aprendiendo.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/Jositopk" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jose-manuel-pastor-gonzález-b341253b3/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <a href="#" data-t="top">
+          Volver arriba
+        </a>
+        <p class="rights-notice" data-t="rightsNotice">
+          © 2026 Jose Manuel Pastor González. Derechos reservados sobre mis obras
+          y aportaciones. No se autoriza su reutilización sin permiso, salvo los
+          usos permitidos por la ley. Los elementos de terceros pertenecen a sus titulares.
+        </p>
+      </footer>
+    </main>
+    <!-- Ventana de detalle de los proyectos -->
+    <dialog id="project-dialog" aria-labelledby="dialog-title">
+      <button class="close" type="button" aria-label="Cerrar">
+        ×
+      </button>
+      <div id="dialog-content">
+      </div>
+    </dialog>
+    <!-- Visor del CV -->
+    <dialog id="cv-dialog" class="cv-dialog" aria-labelledby="cv-title">
+      <div class="cv-toolbar">
+        <h2 id="cv-title" data-t="cvTitle">
+          CV · Jose Manuel Pastor González
+        </h2>
+        <button type="button" class="cv-close" aria-label="Cerrar" autofocus>
+          ×
+        </button>
+      </div>
+      <iframe
+        id="cv-frame"
+        title="CV de Jose Manuel Pastor González"
+        data-src="assets/JoseManuelPastor_CV_Sept2026.pdf#view=FitH"
+      >
+      </iframe>
+      <p class="cv-help" data-t="cvHelp">
+        Si tu navegador no muestra el PDF, puedes usar «Descargar CV» en Sobre mí.
+      </p>
+    </dialog>
+  </body>
+</html>
