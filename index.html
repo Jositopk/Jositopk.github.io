@@ -522,11 +522,16 @@
     </main>
     <!-- Ventana de detalle de los proyectos -->
     <dialog id="project-dialog" aria-labelledby="dialog-title">
-      <button class="close" type="button" aria-label="Cerrar">
-        ×
-      </button>
-      <div id="dialog-content">
+      <div class="project-toolbar">
+        <div id="project-actions" class="project-actions"></div>
+        <button class="close" type="button" aria-label="Cerrar" autofocus>
+          ×
+        </button>
       </div>
+      <div id="dialog-content" tabindex="0" role="region"
+        aria-labelledby="dialog-title"></div>
+      <button id="project-scroll-hint" type="button" hidden
+        aria-controls="dialog-content"></button>
     </dialog>
     <!-- Visor del CV -->
     <dialog id="cv-dialog" class="cv-dialog" aria-labelledby="cv-title">

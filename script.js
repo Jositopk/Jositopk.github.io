@@ -107,6 +107,28 @@ function render() {
   });
 }
 // Ventana de detalle de un proyecto.
+const projectContent = document.querySelector("#dialog-content");
+const projectScrollHint = document.querySelector("#project-scroll-hint");
+
+function updateProjectScrollHint() {
+  if (!dialog?.open) return;
+  const remaining = projectContent.scrollHeight
+    - projectContent.clientHeight - projectContent.scrollTop;
+  projectScrollHint.hidden = remaining <= 4;
+}
+
+projectContent?.addEventListener("scroll", updateProjectScrollHint, { passive: true });
+window.addEventListener("resize", updateProjectScrollHint);
+if (projectContent && typeof ResizeObserver !== "undefined") {
+  new ResizeObserver(updateProjectScrollHint).observe(projectContent);
+}
+projectScrollHint?.addEventListener("click", () => {
+  projectContent.scrollBy({
+    top: projectContent.clientHeight * 0.7,
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+  });
+});
+
 function openProject(i) {
   const p = projects[i],
     t = translations[lang];
@@ -122,9 +144,17 @@ function openProject(i) {
         .split(" / ")
         .map((s) => `<span>${s}</span>`)
         .join("")}
-    </div>
-    ${p.url ? /* HTML */ `<div class="project-actions"><a class="solid" href="${p.url}" target="_blank" rel="noopener noreferrer">${t[p.linkKey]}</a></div>` : ""}`;
+    </div>`;
+  document.querySelector("#project-actions").innerHTML = p.url
+    ? /* HTML */ `<a class="solid" href="${p.url}" target="_blank"
+        rel="noopener noreferrer">${t[p.linkKey]} <span aria-hidden="true">↗</span></a>`
+    : "";
+  dialog.querySelector(".close").setAttribute("aria-label", lang === "en" ? "Close" : "Cerrar");
+  projectScrollHint.textContent = lang === "en" ? "More below ↓" : "Más contenido ↓";
+  projectScrollHint.hidden = true;
   dialog.showModal();
+  projectContent.scrollTop = 0;
+  requestAnimationFrame(updateProjectScrollHint);
   document.body.classList.add("modal-open");
 }
 document.querySelector("#language").addEventListener("change", (e) => {
