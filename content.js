@@ -279,12 +279,17 @@ const projects = [
     },
     "role": {
       "es":
-        "Participé en el desarrollo de esta experiencia universitaria de realidad " +
-        "virtual en Unity. El vídeo de demostración muestra sus interacciones en " +
-        "acción.",
+        "Mi trabajo se centró en el seguimiento de manos y el reconocimiento " +
+        "de gestos para lanzar hechizos. Desarrollé todas las interacciones del " +
+        "arco y las flechas, sin incluir el modelo 3D. También colaboré en " +
+        "pulir el uso de las pociones: quitar el tapón y vaciarlas al darles " +
+        "la vuelta, buscando que cada acción resultara satisfactoria.",
       "en":
-        "I contributed to this university VR project in Unity. The demo video " +
-        "shows its interactions in action."
+        "My main focus was hand tracking and gesture recognition for " +
+        "spellcasting. I developed all bow and arrow interactions, excluding " +
+        "the 3D model. I also helped refine the potion interactions: removing " +
+        "the stopper and pouring out the contents by turning the bottle " +
+        "upside down, making each action feel satisfying."
     },
     "tools": "Unity / VR / Hand tracking"
   },
