@@ -158,3 +158,38 @@ impide desplazar el fondo y devuelve el foco al botón de apertura.
 
 Los botones Arte y Game jams de la cabecera abren art.html y jams.html,
 respectivamente, tanto en escritorio como en el menú móvil.
+
+## Música y mezclador de BandBang
+
+La sección Música incluye los 21 audios de MusicaPorfolio.zip. Los originales
+se han exportado a MP3 estéreo a 128 kb/s para la web; los originales del ZIP
+no se modifican ni se incluyen de nuevo. No hay reproducción automática.
+
+- music-data.js: catálogo, archivos y duraciones.
+- music.js: controles personalizados, traducciones y mezcla sincronizada.
+- assets/audio/: versiones para publicación.
+
+OST ALL y Ambience aparecen como pistas principales de BandBang. El desplegable
+contiene un mezclador con seis instrumentos y todas las mezclas exportadas.
+G = guitarra española, F = violín, H = shehnai, S = sitar, D = batería,
+X = saxofón. Los botones Solo seleccionan únicamente ese instrumento; Todos
+y Ninguno permiten cambiar el conjunto. El botón de reproducción del mezclador
+controla todas las pistas seleccionadas en un reloj común de Web Audio.
+Las pistas individuales duran unos 77 segundos y las mezclas unos 19 segundos:
+se conservan las duraciones originales sin estirar ni recortar los temas.
+
+Una canción pausa cualquier otra canción o mezcla. Las seis pistas del
+mezclador se descargan y decodifican solo al pulsar su botón de reproducción.
+El volumen superior afecta a todos los reproductores. El idioma puede cambiarse
+sin reiniciar el audio ni perder la selección de músicos.
+
+Para probar el mezclador, abre la web desde GitHub Pages o ejecuta en esta carpeta:
+
+    python3 -m http.server 8000
+
+Después visita http://localhost:8000. Al abrir index.html directamente como
+archivo local, las pistas normales funcionan, pero el navegador puede impedir
+que el mezclador cargue sus seis archivos. La interfaz indica esta limitación.
+
+Se mantienen los nombres de proyecto de las carpetas recibidas: BandBang,
+Lazos de Sangre y Time Bender. Dar la nota conserva el aviso de próxima entrega.

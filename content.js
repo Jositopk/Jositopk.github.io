@@ -447,3 +447,13 @@ Object.assign(translations.en, {
   menuOpen: "Open menu",
   menuClose: "Close menu",
 });
+
+// Biblioteca de música.
+translations.es.soundNote =
+  "Escucha mis composiciones y construye la banda de BandBang, instrumento a instrumento.";
+translations.en.soundNote =
+  "Listen to my compositions and build the BandBang ensemble, one instrument at a time.";
+translations.es.musicComing =
+  "Próximamente: música de Dar la nota · GameJam 8 de Game Scholars.";
+translations.en.musicComing =
+  "Coming soon: music from Dar la nota · GameJam 8 de Game Scholars.";

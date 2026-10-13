@@ -17,6 +17,8 @@
     </script>
     <script src="script.js" defer>
     </script>
+    <script src="music-data.js" defer></script>
+    <script src="music.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main" data-t="skip">
@@ -291,40 +293,12 @@
             y acompañar lo que ocurre en pantalla.
           </p>
         </div>
-        <div class="sound-list">
-          <div>
-            <span class="track-no">
-              01
-            </span>
-            <div>
-              <h3>
-                Legado de Sangre
-              </h3>
-              <p data-t="soundtrack">
-                Composición para videojuego · Survival horror
-              </p>
-            </div>
-            <span class="pending" data-t="audioPending">
-              Audio próximamente
-            </span>
-          </div>
-          <div>
-            <span class="track-no">
-              02
-            </span>
-            <div>
-              <h3>
-                Dar la nota
-              </h3>
-              <p data-t="jam">
-                Composición para game jam · GameJam 8 de Game Scholars
-              </p>
-            </div>
-            <span class="pending" data-t="audioPending">
-              Audio próximamente
-            </span>
-          </div>
-        </div>
+        <!-- Biblioteca de audio y mezclador interactivo de BandBang. -->
+        <div id="music-library"></div>
+        <noscript>Activa JavaScript para escuchar la música. / Enable JavaScript to listen.</noscript>
+        <p class="music-coming" data-t="musicComing">
+          Próximamente: música de Dar la nota · GameJam 8 de Game Scholars.
+        </p>
       </section>
       <!-- Sobre mí, aptitudes y CV -->
       <section class="about-section" id="about">
