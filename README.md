@@ -208,8 +208,8 @@ al abrir el HTML directamente con doble clic (`file://`).
   No depende de un CDN ni necesita compilarse para publicarlo en GitHub Pages.
 
 La galería contiene 14 modelos. Robot usa `robot_final` y `robot/pixeladas2`;
-las dos ratas son `rata` y `rata humanizada` (con espacio) y comparten las texturas
-de `rata`; mano usa `Mano_final`. Se excluyen los FBX alternativos descartados y los
+la rata normal se presenta sin texturas y la humanizada usa el FBX y los mapas
+del paquete Rata(1).zip; mano usa `Mano_final`. Se excluyen los FBX alternativos descartados y los
 proyectos MAX del paquete web. Cronometrita utiliza sus mapas originales porque
 la carpeta pixelizada está vacía. Chip y valla usan el segundo ZIP suministrado.
 
@@ -230,3 +230,13 @@ Las portadas se renderizan a partir de las mallas y sus UV, con la marca de agua
 incorporada. El visor muestra la misma marca como superposición, sin reducir otra
 vez su opacidad. Una marca superpuesta no impide extraer un modelo servido al
 navegador. Se mantienen los avisos de derechos del portfolio.
+
+La colección actual pertenece a Time Bender. La introducción abarca arte 3D de
+distintos proyectos. Las miniaturas forman una única fila horizontal desplazable
+en todos los tamaños, con flechas y selector de proyecto. Cada entrada de
+models-data.js tiene una clave project; al añadir otro proyecto, incorpora su
+opción en model-project y añade su nombre a projectNames en viewer3d.js.
+
+Pendiente: el proyecto nórdico se ha recibido principalmente en MAX. Para
+incorporar la escena, Garth y el barco, se necesitan exportaciones FBX o GLB
+con UV y materiales. Los originales MAX no se incluyen en la web.

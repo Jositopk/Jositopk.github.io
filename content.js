@@ -470,8 +470,8 @@ Object.assign(translations.es, {
   art3DLink: "Explorar mi arte 3D ↗",
   modelArchive: "ARCHIVO / ARTE 3D",
   modelHeading: "Mis ideas,<br>desde todos los ángulos.",
-  modelIntro: "Personajes y objetos creados para una game jam. Acércate, gíralos y explora cómo están construidos.",
-  modelMetaDescription: "Arte 3D de Jose Manuel Pastor González. Explora 14 modelos con texturas, giro interactivo y vista wireframe.",
+  modelIntro: "Personajes, objetos y escenarios: mis ideas toman forma en 3D. Explora trabajos de distintos proyectos, acércate a sus detalles y descubre cómo están construidos.",
+  modelMetaDescription: "Arte 3D de Jose Manuel Pastor González. Explora mis modelos con texturas, giro interactivo y vista wireframe.",
   modelTextured: "Texturizado",
   modelOverlay: "Textura + wireframe",
   modelRotation: "Giro automático",
@@ -486,8 +486,8 @@ Object.assign(translations.en, {
   art3DLink: "Explore my 3D art ↗",
   modelArchive: "ARCHIVE / 3D ART",
   modelHeading: "My ideas,<br>from every angle.",
-  modelIntro: "Characters and props created for a game jam. Get closer, rotate them and explore how they are built.",
-  modelMetaDescription: "3D art by Jose Manuel Pastor González. Explore 14 models with textures, interactive rotation and wireframe views.",
+  modelIntro: "Characters, props and environments: my ideas take shape in 3D. Explore work from different projects, get closer to the details and discover how they are built.",
+  modelMetaDescription: "3D art by Jose Manuel Pastor González. Explore my models with textures, interactive rotation and wireframe views.",
   modelTextured: "Textured",
   modelOverlay: "Texture + wireframe",
   modelRotation: "Auto-rotate",
@@ -496,3 +496,7 @@ Object.assign(translations.en, {
   modelWireNote: "Wireframe shows the triangles of the exported mesh.",
   modelCollection: "Explore the collection"
 });
+
+// Navegación por proyectos del archivo 3D.
+Object.assign(translations.es, { modelProject: "Proyecto", modelAllProjects: "Todos los proyectos", modelBrowse: "Desplázate para ver más modelos →" });
+Object.assign(translations.en, { modelProject: "Project", modelAllProjects: "All projects", modelBrowse: "Scroll to explore more models →" });

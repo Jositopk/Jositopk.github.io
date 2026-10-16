@@ -20,6 +20,7 @@ const labels = {
     local: 'Abre esta página desde GitHub Pages o un servidor local para usar el visor.',
     retry: 'Reintentar',
     triangles: 'triángulos',
+    none: 'Sin texturas',
     pixel: 'Texturas pixelizadas',
     original: 'Texturas originales',
     supplied: 'Texturas del modelo',
@@ -36,6 +37,7 @@ const labels = {
     local: 'Open this page on GitHub Pages or a local server to use the viewer.',
     retry: 'Retry',
     triangles: 'triangles',
+    none: 'Untextured',
     pixel: 'Pixelated textures',
     original: 'Original textures',
     supplied: 'Model textures',
@@ -46,6 +48,8 @@ const labels = {
     canvas: '3D model: drag to rotate, scroll to zoom. Camera buttons are also available.',
   },
 };
+const projectNames = { 'time-bender': 'Time Bender' };
+
 let language = document.documentElement.lang === 'en' ? 'en' : 'es';
 let selected = models.find((model) => `#${model.id}` === location.hash) || models[0];
 let renderer, controls, scene, camera;
@@ -66,7 +70,7 @@ function refreshLabels() {
   document.title = `${language === 'en' ? '3D art' : 'Arte 3D'} — Jose Manuel Pastor González`;
   document.querySelector('#model-name').textContent = selected.title[language];
   document.querySelector('#model-counter').textContent =
-    `${String(models.indexOf(selected) + 1).padStart(2, '0')} / ${models.length} · GAME JAM`;
+    `${String(models.indexOf(selected) + 1).padStart(2, '0')} / ${models.length} · ${projectNames[selected.project] || selected.project}`;
   document.querySelector('#model-meta').textContent =
     `${selected.triangles.toLocaleString(language)} ${text.triangles} · ${text[selected.textureType]}`;
   poster.alt = selected.title[language];
@@ -107,6 +111,7 @@ function buildGallery() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'model-card';
+    button.dataset.project = model.project;
     const image = document.createElement('img');
     image.src = model.poster;
     image.width = image.height = 600;
@@ -387,6 +392,24 @@ window.addEventListener('hashchange', () => {
   const model = models.find((item) => `#${item.id}` === location.hash);
   if (model && model !== selected) selectModel(model);
 });
+
+// Una sola escena WebGL; el filtro controla las miniaturas disponibles.
+const projectFilter = document.querySelector('#model-project');
+projectFilter.addEventListener('change', () => {
+  const project = projectFilter.value;
+  gallery.querySelectorAll('.model-card').forEach((card) => {
+    card.hidden = project !== 'all' && card.dataset.project !== project;
+  });
+  const first = models.find((model) => project === 'all' || model.project === project);
+  if (first && project !== 'all' && selected.project !== project) selectModel(first);
+  gallery.scrollTo({ left: 0, behavior: 'auto' });
+});
+for (const [id, direction] of [['gallery-prev', -1], ['gallery-next', 1]]) {
+  document.querySelector(`#${id}`).addEventListener('click', () => {
+    gallery.scrollBy({ left: direction * gallery.clientWidth * 0.75,
+      behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+  });
+}
 
 buildGallery();
 refreshLabels();

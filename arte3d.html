@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#243341">
     <meta
       name="description"
-      content="Arte 3D de Jose Manuel Pastor González. Explora 14 modelos con texturas y wireframe."
+      content="Arte 3D de Jose Manuel Pastor González. Explora mis modelos con texturas y wireframe."
     >
     <title>
       Arte 3D — Jose Manuel Pastor González
@@ -86,7 +86,7 @@
         </nav>
         <p class="eyebrow" data-t="modelArchive">ARCHIVO / ARTE 3D</p>
         <h1 data-t="modelHeading">Mis ideas,<br>desde todos los ángulos.</h1>
-        <p class="model-intro-copy" data-t="modelIntro">Personajes y objetos creados para una game jam. Acércate, gíralos y explora cómo están construidos.</p>
+        <p class="model-intro-copy" data-t="modelIntro">Personajes, objetos y escenarios: mis ideas toman forma en 3D. Explora trabajos de distintos proyectos, acércate a sus detalles y descubre cómo están construidos.</p>
       </section>
       <section class="wrap model-section" aria-labelledby="model-name">
         <div class="model-heading-row">
@@ -118,7 +118,16 @@
         </div>
         <p class="model-instructions" data-t="modelInstructions">Arrastra para girar · Rueda o pellizco para acercar · Botón derecho o dos dedos para desplazar. El giro se reanuda tras 5 segundos sin interacción.</p>
         <p class="model-wire-note" data-t="modelWireNote">Wireframe muestra los triángulos de la malla exportada.</p>
-        <div class="model-gallery-heading"><h2 data-t="modelCollection">Explora la colección</h2><span>14 / GAME JAM</span></div>
+        <div class="model-gallery-heading"><h2 data-t="modelCollection">Explora la colección</h2><span data-t="modelBrowse">Desplázate para ver más modelos →</span></div>
+        <div class="model-project-filter">
+          <label for="model-project" data-t="modelProject">Proyecto</label>
+          <select id="model-project">
+            <option value="all" data-t="modelAllProjects">Todos los proyectos</option>
+            <option value="time-bender">Time Bender · Game jam</option>
+          </select>
+          <button type="button" id="gallery-prev" aria-label="Modelos anteriores / Previous models">←</button>
+          <button type="button" id="gallery-next" aria-label="Más modelos / More models">→</button>
+        </div>
         <div id="model-gallery" class="model-gallery" aria-label="Modelos / Models"></div>
         <noscript><p>Activa JavaScript para utilizar el visor 3D. / Enable JavaScript to use the 3D viewer.</p></noscript>
       </section>

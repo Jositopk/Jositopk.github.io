@@ -18,7 +18,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 4168
+    "triangles": 4168,
+    "project": "time-bender"
   },
   {
     "id": "rata",
@@ -29,16 +30,10 @@ export const models = [
     },
     "url": "assets/models/rata/model.glb",
     "poster": "assets/models/rata/cover.webp",
-    "textures": {
-      "default": {
-        "metalnessMap": "assets/models/rata/default-metalnessMap.png",
-        "aoMap": "assets/models/rata/default-aoMap.png",
-        "map": "assets/models/rata/default-map.png",
-        "emissiveMap": "assets/models/rata/default-emissiveMap.png"
-      }
-    },
-    "textureType": "pixel",
-    "triangles": 1356
+    "textures": {},
+    "textureType": "none",
+    "triangles": 1356,
+    "project": "time-bender"
   },
   {
     "id": "rata-humanizada",
@@ -51,14 +46,15 @@ export const models = [
     "poster": "assets/models/rata-humanizada/cover.webp",
     "textures": {
       "default": {
-        "metalnessMap": "assets/models/rata-humanizada/default-metalnessMap.png",
-        "aoMap": "assets/models/rata-humanizada/default-aoMap.png",
         "map": "assets/models/rata-humanizada/default-map.png",
-        "emissiveMap": "assets/models/rata-humanizada/default-emissiveMap.png"
+        "emissiveMap": "assets/models/rata-humanizada/default-emissiveMap.png",
+        "roughnessMap": "assets/models/rata-humanizada/default-roughnessMap.png",
+        "metalnessMap": "assets/models/rata-humanizada/default-metalnessMap.png"
       }
     },
-    "textureType": "pixel",
-    "triangles": 1316
+    "textureType": "supplied",
+    "triangles": 1316,
+    "project": "time-bender"
   },
   {
     "id": "mano",
@@ -77,7 +73,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 346
+    "triangles": 346,
+    "project": "time-bender"
   },
   {
     "id": "armario",
@@ -96,7 +93,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 508
+    "triangles": 508,
+    "project": "time-bender"
   },
   {
     "id": "reloj",
@@ -125,7 +123,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 288
+    "triangles": 288,
+    "project": "time-bender"
   },
   {
     "id": "tubo-cristal",
@@ -165,7 +164,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 1048
+    "triangles": 1048,
+    "project": "time-bender"
   },
   {
     "id": "silla",
@@ -184,7 +184,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 1292
+    "triangles": 1292,
+    "project": "time-bender"
   },
   {
     "id": "tuberia",
@@ -203,7 +204,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 1412
+    "triangles": 1412,
+    "project": "time-bender"
   },
   {
     "id": "palanca",
@@ -222,7 +224,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 64
+    "triangles": 64,
+    "project": "time-bender"
   },
   {
     "id": "caja-chip",
@@ -241,7 +244,8 @@ export const models = [
       }
     },
     "textureType": "pixel",
-    "triangles": 80
+    "triangles": 80,
+    "project": "time-bender"
   },
   {
     "id": "cronometrita",
@@ -262,7 +266,8 @@ export const models = [
       }
     },
     "textureType": "original",
-    "triangles": 192
+    "triangles": 192,
+    "project": "time-bender"
   },
   {
     "id": "chip",
@@ -282,7 +287,8 @@ export const models = [
       }
     },
     "textureType": "supplied",
-    "triangles": 776
+    "triangles": 776,
+    "project": "time-bender"
   },
   {
     "id": "valla",
@@ -301,6 +307,7 @@ export const models = [
       }
     },
     "textureType": "supplied",
-    "triangles": 116
+    "triangles": 116,
+    "project": "time-bender"
   }
 ];
