@@ -193,3 +193,40 @@ que el mezclador cargue sus seis archivos. La interfaz indica esta limitación.
 
 Se mantienen los nombres de proyecto de las carpetas recibidas: BandBang,
 Lazos de Sangre y Time Bender. Dar la nota conserva el aviso de próxima entrega.
+
+## Visor de arte 3D
+
+Abre `arte3d.html` desde GitHub Pages o un servidor HTTP local (por ejemplo,
+`python3 -m http.server 8000`). Los módulos ES y las cargas de modelos no funcionan
+al abrir el HTML directamente con doble clic (`file://`).
+
+- `viewer3d.js`: carga, cámara, rotación, materiales y modos de visualización.
+- `viewer3d.css`: diseño adaptable del visor y de las miniaturas.
+- `models-data.js`: catálogo, nombres bilingües y asignaciones explícitas de mapas.
+- `assets/models/`: un GLB optimizado, portada y mapas por modelo.
+- `assets/vendor/three/`: Three.js 0.180.0 y módulos necesarios, con su licencia MIT.
+  No depende de un CDN ni necesita compilarse para publicarlo en GitHub Pages.
+
+La galería contiene 14 modelos. Robot usa `robot_final` y `robot/pixeladas2`;
+las dos ratas son `rata` y `rata humanizada` (con espacio) y comparten las texturas
+de `rata`; mano usa `Mano_final`. Se excluyen los FBX alternativos descartados y los
+proyectos MAX del paquete web. Cronometrita utiliza sus mapas originales porque
+la carpeta pixelizada está vacía. Chip y valla usan el segundo ZIP suministrado.
+
+Cada pieza se carga al seleccionarla y libera los recursos del modelo anterior.
+Los botones permiten girar y acercar sin depender exclusivamente de gestos. El
+giro se detiene al interactuar y se reanuda a los cinco segundos, salvo que el
+visitante lo desactive. La preferencia de movimiento reducido lo desactiva de inicio.
+Wireframe muestra la triangulación del modelo exportado, no los polígonos originales
+de 3ds Max. Los tres modos comparten geometría y cambian sin recargar el modelo.
+
+Los mapas de color y emisión usan sRGB; AO, metal y rugosidad usan datos lineales.
+Se aplica el normal OpenGL cuando está identificado explícitamente. Los mapas de
+normales pixelizados no declaran su convención y por ahora no se aplican; tampoco
+se aplica desplazamiento por height para no alterar la silueta de la obra. En las
+texturas pixelizadas se conserva el filtrado de ampliación sin suavizado.
+
+Las portadas se renderizan a partir de las mallas y sus UV, con la marca de agua
+incorporada. El visor muestra la misma marca como superposición, sin reducir otra
+vez su opacidad. Una marca superpuesta no impide extraer un modelo servido al
+navegador. Se mantienen los avisos de derechos del portfolio.

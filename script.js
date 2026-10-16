@@ -20,7 +20,8 @@ function render() {
   document.querySelectorAll("[data-alt]").forEach((el) => (el.alt = t[el.dataset.alt]));
   document.querySelector('meta[name="description"]').content = isJams
     ? t.jamMeta
-    : document.body.dataset.page === "art" ? t.galleryMeta : t.meta;
+    : document.body.dataset.page === "art" ? t.galleryMeta
+    : document.body.dataset.page === "art3d" ? t.modelMetaDescription : t.meta;
   document
     .querySelector("nav")
     .setAttribute("aria-label", lang === "es" ? "Principal" : "Main navigation");
@@ -96,10 +97,11 @@ function render() {
       )
       .join("");
   if (typeof renderGallery === "function") renderGallery();
+  document.dispatchEvent(new CustomEvent("portfolio-language", { detail: lang }));
   // Conserva el idioma al cambiar de página, incluso al abrir archivos locales.
   document.querySelectorAll("a[href]").forEach((a) => {
     const href = a.getAttribute("href");
-    if (/^(index|jams|art)\.html/.test(href)) {
+    if (/^(index|jams|art|arte3d)\.html/.test(href)) {
       const u = new URL(href, location.href);
       u.searchParams.set("lang", lang);
       a.setAttribute("href", u.pathname.split("/").pop() + u.search + u.hash);

@@ -462,3 +462,37 @@ translations.es.musicComing =
   "Próximamente: música de Dar la nota · GameJam 8 de Game Scholars.";
 translations.en.musicComing =
   "Coming soon: music from Dar la nota · GameJam 8 de Game Scholars.";
+
+// Archivo 3D: interfaz del visor y navegación entre disciplinas.
+Object.assign(translations.es, {
+  gallery3D: "Arte 3D",
+  art3DSummary: "Personajes y objetos que puedes explorar desde cualquier ángulo.",
+  art3DLink: "Explorar mi arte 3D ↗",
+  modelArchive: "ARCHIVO / ARTE 3D",
+  modelHeading: "Mis ideas,<br>desde todos los ángulos.",
+  modelIntro: "Personajes y objetos creados para una game jam. Acércate, gíralos y explora cómo están construidos.",
+  modelMetaDescription: "Arte 3D de Jose Manuel Pastor González. Explora 14 modelos con texturas, giro interactivo y vista wireframe.",
+  modelTextured: "Texturizado",
+  modelOverlay: "Textura + wireframe",
+  modelRotation: "Giro automático",
+  modelReset: "Restablecer vista",
+  modelInstructions: "Arrastra para girar · Rueda o pellizco para acercar · Botón derecho o dos dedos para desplazar. El giro se reanuda tras 5 segundos sin interacción.",
+  modelWireNote: "Wireframe muestra los triángulos de la malla exportada.",
+  modelCollection: "Explora la colección"
+});
+Object.assign(translations.en, {
+  gallery3D: "3D art",
+  art3DSummary: "Characters and objects you can explore from every angle.",
+  art3DLink: "Explore my 3D art ↗",
+  modelArchive: "ARCHIVE / 3D ART",
+  modelHeading: "My ideas,<br>from every angle.",
+  modelIntro: "Characters and props created for a game jam. Get closer, rotate them and explore how they are built.",
+  modelMetaDescription: "3D art by Jose Manuel Pastor González. Explore 14 models with textures, interactive rotation and wireframe views.",
+  modelTextured: "Textured",
+  modelOverlay: "Texture + wireframe",
+  modelRotation: "Auto-rotate",
+  modelReset: "Reset view",
+  modelInstructions: "Drag to rotate · Scroll or pinch to zoom · Right-drag or use two fingers to pan. Rotation resumes after 5 seconds without interaction.",
+  modelWireNote: "Wireframe shows the triangles of the exported mesh.",
+  modelCollection: "Explore the collection"
+});

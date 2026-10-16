@@ -1795,3 +1795,25 @@ body.menu-open {
     gap: 8px;
   }
 }
+
+/* Navegación entre los archivos de arte, compartida por 2D y 3D. */
+.art-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 32px;
+}
+.art-tabs a {
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+.art-tabs a[aria-current="page"],
+.art-tabs a:hover {
+  background: var(--lime);
+  color: var(--deep);
+}
+.art-ribbon-3d .ribbon-panel img {
+  object-fit: cover;
+  object-position: center;
+}
