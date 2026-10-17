@@ -1,4 +1,4 @@
-// Modelos y asignaciones de texturas. Una entrada por obra.
+// Catálogo 3D: 14 piezas de Time Bender y 3 del proyecto Nórdico.
 export const models = [
   {
     "id": "robot",
@@ -8,7 +8,7 @@ export const models = [
       "en": "Robot"
     },
     "url": "assets/models/robot/model.glb",
-    "poster": "assets/models/robot/cover.webp",
+    "poster": "assets/models/robot/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/robot/default-metalnessMap.png",
@@ -29,7 +29,7 @@ export const models = [
       "en": "Rat"
     },
     "url": "assets/models/rata/model.glb",
-    "poster": "assets/models/rata/cover.webp",
+    "poster": "assets/models/rata/cover-v22.webp",
     "textures": {},
     "textureType": "none",
     "triangles": 1356,
@@ -43,7 +43,7 @@ export const models = [
       "en": "Humanoid rat"
     },
     "url": "assets/models/rata-humanizada/model.glb",
-    "poster": "assets/models/rata-humanizada/cover.webp",
+    "poster": "assets/models/rata-humanizada/cover-v22.webp",
     "textures": {
       "default": {
         "map": "assets/models/rata-humanizada/default-map.png",
@@ -64,7 +64,7 @@ export const models = [
       "en": "Hand"
     },
     "url": "assets/models/mano/model.glb",
-    "poster": "assets/models/mano/cover.webp",
+    "poster": "assets/models/mano/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/mano/default-metalnessMap.png",
@@ -84,7 +84,7 @@ export const models = [
       "en": "Cabinet"
     },
     "url": "assets/models/armario/model.glb",
-    "poster": "assets/models/armario/cover.webp",
+    "poster": "assets/models/armario/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/armario/default-metalnessMap.png",
@@ -104,7 +104,7 @@ export const models = [
       "en": "Clock"
     },
     "url": "assets/models/reloj/model.glb",
-    "poster": "assets/models/reloj/cover.webp",
+    "poster": "assets/models/reloj/cover-v22.webp",
     "textures": {
       "71": {
         "map": "assets/models/reloj/71-map.png",
@@ -134,7 +134,7 @@ export const models = [
       "en": "Glass chamber"
     },
     "url": "assets/models/tubo-cristal/model.glb",
-    "poster": "assets/models/tubo-cristal/cover.webp",
+    "poster": "assets/models/tubo-cristal/cover-v22.webp",
     "textures": {
       "37": {
         "metalnessMap": "assets/models/tubo-cristal/37-metalnessMap.png",
@@ -175,7 +175,7 @@ export const models = [
       "en": "Desk chair"
     },
     "url": "assets/models/silla/model.glb",
-    "poster": "assets/models/silla/cover.webp",
+    "poster": "assets/models/silla/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/silla/default-metalnessMap.png",
@@ -195,7 +195,7 @@ export const models = [
       "en": "Pipe"
     },
     "url": "assets/models/tuberia/model.glb",
-    "poster": "assets/models/tuberia/cover.webp",
+    "poster": "assets/models/tuberia/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/tuberia/default-metalnessMap.png",
@@ -215,7 +215,7 @@ export const models = [
       "en": "Lever"
     },
     "url": "assets/models/palanca/model.glb",
-    "poster": "assets/models/palanca/cover.webp",
+    "poster": "assets/models/palanca/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/palanca/default-metalnessMap.png",
@@ -235,7 +235,7 @@ export const models = [
       "en": "Chip case"
     },
     "url": "assets/models/caja-chip/model.glb",
-    "poster": "assets/models/caja-chip/cover.webp",
+    "poster": "assets/models/caja-chip/cover-v22.webp",
     "textures": {
       "default": {
         "metalnessMap": "assets/models/caja-chip/default-metalnessMap.png",
@@ -255,7 +255,7 @@ export const models = [
       "en": "Cronometrita"
     },
     "url": "assets/models/cronometrita/model.glb",
-    "poster": "assets/models/cronometrita/cover.webp",
+    "poster": "assets/models/cronometrita/cover-v22.webp",
     "textures": {
       "default": {
         "map": "assets/models/cronometrita/default-map.png",
@@ -277,7 +277,7 @@ export const models = [
       "en": "Chip"
     },
     "url": "assets/models/chip/model.glb",
-    "poster": "assets/models/chip/cover.webp",
+    "poster": "assets/models/chip/cover-v22.webp",
     "textures": {
       "default": {
         "roughnessMap": "assets/models/chip/default-roughnessMap.png",
@@ -298,7 +298,7 @@ export const models = [
       "en": "Fence"
     },
     "url": "assets/models/valla/model.glb",
-    "poster": "assets/models/valla/cover.webp",
+    "poster": "assets/models/valla/cover-v22.webp",
     "textures": {
       "default": {
         "roughnessMap": "assets/models/valla/default-roughnessMap.png",
@@ -318,7 +318,7 @@ export const models = [
       "en": "Viking ship"
     },
     "url": "assets/models/barco-vikingo/model.glb",
-    "poster": "assets/models/barco-vikingo/cover.webp",
+    "poster": "assets/models/barco-vikingo/cover-v22.webp",
     "textures": {
       "default": {
         "normalMap": "assets/models/barco-vikingo/default-normalMap.png",
@@ -340,7 +340,7 @@ export const models = [
       "en": "Garth · Character"
     },
     "url": "assets/models/garth/model.glb",
-    "poster": "assets/models/garth/cover.webp",
+    "poster": "assets/models/garth/cover-v22.webp",
     "textures": {
       "51": {
         "map": "assets/models/garth/51-map.png",
@@ -390,7 +390,7 @@ export const models = [
       "en": "Garth’s helmet"
     },
     "url": "assets/models/casco-garth/model.glb",
-    "poster": "assets/models/casco-garth/cover.webp",
+    "poster": "assets/models/casco-garth/cover-v22.webp",
     "textures": {
       "default": {
         "normalMap": "assets/models/casco-garth/default-normalMap.png",

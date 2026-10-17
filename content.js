@@ -512,3 +512,10 @@ Object.assign(translations.en, {
   modelShortIntro: "Characters, objects and ideas in three dimensions.",
   modelHint: "Drag to rotate · Pinch or scroll to zoom"
 });
+
+Object.assign(translations.es, {
+  modelSideIntro: "Personajes, objetos y escenarios de mis proyectos. Explora sus formas, materiales y cómo están construidos."
+});
+Object.assign(translations.en, {
+  modelSideIntro: "Characters, props and environments from my projects. Explore their shapes, materials and how they are built."
+});

@@ -12,15 +12,15 @@
       Arte 3D — Jose Manuel Pastor González
     </title>
     <link rel="icon" href="assets/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=3d-21">
-    <script src="content.js?v=3d-21" defer>
+    <link rel="stylesheet" href="styles.css?v=3d-22">
+    <script src="content.js?v=3d-22" defer>
     </script>
-    <link rel="stylesheet" href="viewer3d.css?v=3d-21">
+    <link rel="stylesheet" href="viewer3d-v22.css">
     <script type="importmap">
       {"imports":{"three":"./assets/vendor/three/build/three.module.js"}}
     </script>
-    <script type="module" src="viewer3d.js?v=3d-21"></script>
-    <script src="script.js?v=3d-21" defer>
+    <script type="module" src="viewer3d-v22.js"></script>
+    <script src="script.js?v=3d-22" defer>
     </script>
   </head>
   <body data-page="art3d">
@@ -81,38 +81,40 @@
       <section class="model-intro" aria-label="Arte 3D">
         <nav class="art-tabs" aria-label="Arte / Art">
           <a href="art.html" data-t="gallery2D">Arte 2D</a>
-          <a href="arte3d.html" aria-current="page" data-t="gallery3D">Arte 3D</a>
+          <a href="arte3d.html?v=22" aria-current="page" data-t="gallery3D">Arte 3D</a>
         </nav>
         <p data-t="modelShortIntro">Personajes, objetos e ideas en tres dimensiones.</p>
       </section>
       <section class="model-section" aria-labelledby="model-name">
         <div class="model-workbench">
-          <div class="model-heading-row">
-            <div>
+          <aside class="model-panel" aria-label="Información y controles / Information and controls">
+            <div class="model-heading-row">
               <p class="eyebrow" id="model-counter"></p>
-              <h2 id="model-name">Robot</h2>
+              <h1 id="model-name">Robot</h1>
+              <p class="model-meta" id="model-meta"></p>
             </div>
-            <p class="model-meta" id="model-meta"></p>
-          </div>
-          <div class="model-toolbar" role="group" aria-label="Visualización / Display">
-            <button type="button" data-mode="textured" aria-pressed="true" data-t="modelTextured">Texturizado</button>
-            <button type="button" data-mode="wire" aria-pressed="false">Wireframe</button>
-            <button type="button" data-mode="overlay" aria-pressed="false" data-t="modelOverlay">Textura + wireframe</button>
-          </div>
+            <p class="model-description" data-t="modelSideIntro">Personajes, objetos y escenarios de mis proyectos. Explora sus formas, materiales y cómo están construidos.</p>
+            <div class="model-toolbar" role="group" aria-label="Visualización / Display">
+              <button type="button" data-mode="textured" aria-pressed="true" data-t="modelTextured">Texturizado</button>
+              <button type="button" data-mode="wire" aria-pressed="false">Wireframe</button>
+              <button type="button" data-mode="overlay" aria-pressed="false" data-t="modelOverlay">Textura + wireframe</button>
+            </div>
+            <div class="model-controls">
+              <button type="button" id="model-rotation" aria-pressed="true" data-t="modelRotation">Giro automático</button>
+              <div class="model-camera-controls" role="group" aria-label="Cámara / Camera">
+                <button type="button" id="model-left" aria-label="Girar a la izquierda">←</button>
+                <button type="button" id="model-right" aria-label="Girar a la derecha">→</button>
+                <button type="button" id="model-zoom-out" aria-label="Alejar">−</button>
+                <button type="button" id="model-zoom-in" aria-label="Acercar">+</button>
+                <button type="button" id="model-reset" data-t="modelReset">Restablecer vista</button>
+              </div>
+            </div>
+            <p class="model-help" data-t="modelHint">Arrastra para girar · Pellizca o usa la rueda para acercar</p>
+          </aside>
           <div id="model-stage" class="model-stage" aria-busy="true">
-            <img id="model-poster" src="assets/models/robot/cover.webp?v=3d-21" alt="Robot" width="600" height="600">
+            <img id="model-poster" src="assets/models/robot/cover-v22.webp" alt="Robot" width="600" height="600">
             <canvas id="model-canvas" tabindex="0" aria-label="Visor 3D interactivo"></canvas>
             <div id="model-status" role="status" aria-live="polite"></div>
-          </div>
-          <div class="model-controls">
-            <button type="button" id="model-rotation" aria-pressed="true" data-t="modelRotation">Giro automático</button>
-            <div class="model-camera-controls">
-              <button type="button" id="model-left" aria-label="Girar a la izquierda">←</button>
-              <button type="button" id="model-right" aria-label="Girar a la derecha">→</button>
-              <button type="button" id="model-zoom-out" aria-label="Alejar">−</button>
-              <button type="button" id="model-zoom-in" aria-label="Acercar">+</button>
-              <button type="button" id="model-reset" data-t="modelReset">Restablecer vista</button>
-            </div>
           </div>
         </div>
         <div class="model-project-filter">
@@ -128,7 +130,7 @@
         <div id="model-gallery" class="model-gallery" aria-label="Modelos / Models"></div>
         <noscript><p>Activa JavaScript para utilizar el visor 3D. / Enable JavaScript to use the 3D viewer.</p></noscript>
       </section>
-      <footer class="model-footer">© 2026 Jose Manuel Pastor González <span data-t="modelHint">Arrastra para girar · Pellizca o usa la rueda para acercar</span></footer>
+      <footer class="model-footer">© 2026 Jose Manuel Pastor González <span>3D / 22</span></footer>
     </main>
   </body>
 </html>

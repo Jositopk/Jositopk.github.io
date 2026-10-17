@@ -246,3 +246,10 @@ integrado sin bordes y carrusel horizontal inferior. Verificado en Chromium
 a 1440×900, 1366×768, 390×844, 375×667 y 844×390, sin scroll vertical.
 Las referencias del visor llevan versión para evitar mezclar archivos antiguos
 de caché. Sustituir todos los archivos del ZIP al publicar, incluida assets.
+
+Versión 22: panel izquierdo del 35 % y visor derecho del 65 % en escritorio.
+En móvil: controles, visor, selector y carrusel inferior. El selector se genera
+desde el catálogo y contiene Time Bender y Nórdico. Los archivos viewer3d-v22
+y models-data-v22 son los utilizados por arte3d.html. Ninguna portada ni
+miniatura 3D lleva marca. El arte 2D se conserva sin cambios.
+La esquina inferior derecha muestra 3D / 22 para identificar esta revisión.

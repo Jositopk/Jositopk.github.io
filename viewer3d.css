@@ -1,4 +1,4 @@
-/* A single viewport: only the model strip scrolls. */
+/* Full-screen art viewer. The gallery is the only scrolling region. */
 body[data-page="art3d"] {
   height: 100vh;
   height: 100dvh;
@@ -9,81 +9,78 @@ body[data-page="art3d"] {
 }
 body[data-page="art3d"] > header { flex: 0 0 70px; height: 70px; min-height: 70px; border: 0; }
 #main { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 4%; }
-.model-intro { display: flex; align-items: center; gap: 24px; flex: 0 0 46px; }
-.model-intro p { color: var(--muted); font-size: 12px; margin: 0; }
+.model-intro { display: flex; align-items: center; gap: 24px; flex: 0 0 44px; }
+.model-intro p { color: var(--muted); font-size: 11px; margin: 0; }
 .model-intro .art-tabs { margin: 0; gap: 18px; }
 .model-intro .art-tabs a { padding: 5px 0; font-size: 13px; }
-.model-section { flex: 1; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 44px 128px; gap: 8px; }
-.model-workbench { position: relative; min-height: 0; }
-.model-stage { position: absolute; inset: 0; isolation: isolate; }
+.model-section { flex: 1; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 42px 126px; gap: 8px; }
+.model-workbench { display: grid; grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); min-height: 0; }
+.model-panel { min-height: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 12px 28px 12px 0; gap: 18px; }
+.model-heading-row .eyebrow { color: var(--lime); font-size: 11px; margin: 0 0 12px; }
+.model-heading-row h1 { font-size: clamp(25px, 3.1vw, 48px); line-height: 1.1; margin: 0; letter-spacing: -.04em; }
+.model-meta { font-size: 10px; color: var(--muted); margin: 12px 0 0; }
+.model-description { max-width: 36ch; font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0; }
+.model-stage { position: relative; min-height: 0; min-width: 0; isolation: isolate; }
 #model-canvas { width: 100%; height: 100%; display: block; touch-action: none; }
 #model-canvas:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
 #model-poster { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: contain; z-index: 1; background: var(--bg); }
 #model-poster[hidden] { display: none; }
-.model-heading-row { position: absolute; top: 12px; left: 0; z-index: 2; pointer-events: none; }
-.model-heading-row .eyebrow { font-size: 10px; margin: 0 0 4px; }
-.model-heading-row h2 { font-size: clamp(20px, 3vw, 34px); margin: 0; line-height: 1.15; }
-.model-meta { font-size: 10px; color: var(--muted); margin: 6px 0; }
-.model-toolbar { position: absolute; top: 12px; right: 0; z-index: 3; display: flex; gap: 5px; }
+.model-toolbar { display: flex; flex-wrap: wrap; gap: 5px; }
 .model-workbench button, .model-project-filter button, .model-project-filter select {
-  font: inherit; font-size: 11px; color: var(--text); background: var(--bg);
-  border: 1px solid transparent; border-radius: 5px; min-height: 36px; padding: 7px 10px; cursor: pointer;
+  font: inherit; font-size: 11px; color: var(--text); background: transparent;
+  border: 1px solid var(--line); border-radius: 4px; min-height: 36px; padding: 7px 10px; cursor: pointer;
 }
-.model-workbench button:hover, .model-project-filter button:hover { color: var(--lime); }
-.model-workbench button[aria-pressed="true"] { color: var(--deep); background: var(--lime); }
+.model-workbench button:hover, .model-project-filter button:hover { color: var(--lime); border-color: var(--lime); }
+.model-workbench button[aria-pressed="true"] { color: var(--deep); background: var(--lime); border-color: var(--lime); }
 .model-workbench button:disabled { opacity: .45; cursor: wait; }
-.model-controls { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; display: flex; justify-content: space-between; gap: 6px; }
-.model-camera-controls { display: flex; gap: 4px; }
-#model-status { position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); z-index: 4; color: var(--lime); background: var(--bg); font-size: 12px; padding: 8px; max-width: 90%; text-align: center; }
+.model-controls { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.model-camera-controls { display: flex; flex-wrap: wrap; gap: 4px; }
+.model-camera-controls button { border-color: transparent; }
+.model-help { color: var(--muted); font-size: 10px; line-height: 1.7; max-width: 36ch; margin: 0; }
+#model-status { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 4; color: var(--lime); background: var(--bg); font-size: 12px; padding: 8px; max-width: 90%; text-align: center; }
 #model-status:empty { display: none; }
 .model-project-filter { display: flex; align-items: center; gap: 10px; }
 .model-project-filter label { font-size: 11px; color: var(--muted); }
-.model-project-filter select { border-color: var(--line); width: 230px; }
+.model-project-filter select { border-color: var(--line); width: 230px; background: var(--bg); }
 #gallery-prev { margin-left: auto; }
-.model-project-filter button { font-size: 20px; padding: 0 10px; }
+.model-project-filter button { font-size: 20px; padding: 0 10px; border-color: transparent; }
 .model-gallery { min-height: 0; display: flex; gap: 12px; overflow-x: auto; overflow-y: hidden; padding: 2px 0 8px; scroll-snap-type: x proximity; scrollbar-color: var(--lime) var(--bg); scrollbar-width: thin; }
-.model-card { flex: 0 0 126px; min-width: 0; padding: 0; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; scroll-snap-align: start; }
+.model-card { flex: 0 0 126px; min-width: 0; padding: 0; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); font: inherit; cursor: pointer; scroll-snap-align: start; }
 .model-card[hidden] { display: none; }
-.model-card img { display: block; width: 100%; height: 82px; object-fit: contain; }
+.model-card img { display: block; width: 100%; height: 80px; object-fit: contain; }
 .model-card span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 5px 2px; font-size: 10px; }
 .model-card[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); }
 .model-card:hover { color: var(--text); }
-.model-footer { display: flex; justify-content: space-between; gap: 10px; flex: 0 0 26px; align-items: center; font-size: 9px; color: var(--muted); padding: 0; margin: 0; border: 0; }
+body[data-page="art3d"] .model-footer { display: flex; justify-content: space-between; gap: 10px; flex: 0 0 22px; min-height: 0; align-items: center; font-size: 8px; color: var(--muted); padding: 0; margin: 0; border: 0; }
 @media (max-width: 700px) {
-  body[data-page="art3d"] > header { flex-basis: 60px; height: 60px; min-height: 60px; padding-top: 4px; padding-bottom: 4px; }
-  #main { padding: 0 4%; }
-  .model-intro { flex-basis: 34px; }
+  body[data-page="art3d"] > header { flex-basis: 58px; height: 58px; min-height: 58px; padding-top: 4px; padding-bottom: 4px; }
+  .model-intro { flex-basis: 32px; }
   .model-intro p { display: none; }
-  .model-section { grid-template-rows: minmax(0, 1fr) 40px 102px; gap: 4px; }
-  .model-toolbar { top: 70px; left: 0; right: auto; }
-  .model-workbench button { font-size: 10px; padding: 6px 7px; min-height: 32px; }
-  .model-meta { font-size: 9px; }
+  .model-section { grid-template-rows: minmax(0, 1fr) 38px 102px; gap: 4px; }
+  .model-workbench { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+  .model-panel { padding: 4px 0 0; gap: 6px; justify-content: start; }
+  .model-heading-row h1 { font-size: 22px; }
+  .model-heading-row .eyebrow { font-size: 9px; margin: 0 0 3px; }
+  .model-meta, .model-description, .model-help { display: none; }
+  .model-toolbar { gap: 4px; flex-wrap: nowrap; }
+  .model-workbench button { font-size: 9px; padding: 5px 6px; min-height: 28px; }
+  .model-controls { flex-direction: row; width: 100%; gap: 4px; align-items: center; justify-content: space-between; }
+  .model-camera-controls { flex-wrap: nowrap; gap: 0; }
   .model-card { flex-basis: 104px; }
   .model-card img { height: 62px; }
   .model-project-filter { gap: 5px; }
-  .model-project-filter select { width: 185px; }
-  .model-footer { font-size: 8px; flex-basis: 22px; }
-  .model-footer span { display: none; }
+  .model-project-filter select { width: 185px; min-height: 32px; }
 }
-@media (max-height: 500px) {
+@media (max-height: 520px) and (min-width: 701px) {
   body[data-page="art3d"] > header { flex-basis: 48px; height: 48px; min-height: 48px; }
   .model-intro { display: none; }
-  .model-section { grid-template-rows: minmax(0, 1fr) 34px 82px; gap: 3px; }
+  .model-section { grid-template-rows: minmax(0, 1fr) 34px 80px; gap: 3px; }
+  .model-panel { gap: 8px; padding: 4px 12px 4px 0; }
+  .model-heading-row h1 { font-size: 20px; }
+  .model-heading-row .eyebrow { font-size: 9px; margin-bottom: 4px; }
+  .model-meta, .model-description, .model-help { display: none; }
+  .model-workbench button { min-height: 26px; padding: 3px 5px; font-size: 9px; }
+  .model-controls { gap: 4px; }
   .model-card { flex-basis: 94px; }
-  .model-card img { height: 48px; }
-  .model-toolbar { top: 4px; left: auto; right: 0; }
-  .model-heading-row { top: 4px; }
-  .model-heading-row h2 { font-size: 18px; }
-  .model-meta { display: none; }
-  .model-workbench button { min-height: 28px; padding: 4px 6px; font-size: 9px; }
-  .model-footer { flex-basis: 18px; }
-}
-/* Override the shared site's tall footer; reserve space for overlay controls. */
-body[data-page="art3d"] .model-footer { min-height: 0; }
-.model-stage { inset: 42px 0 40px; }
-@media (max-width: 700px) {
-  .model-stage { inset: 106px 0 38px; }
-}
-@media (max-height: 500px) {
-  .model-stage { inset: 38px 0 28px; }
+  .model-card img { height: 46px; }
 }

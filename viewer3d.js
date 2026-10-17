@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from './assets/vendor/three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from './assets/vendor/three/examples/jsm/loaders/GLTFLoader.js';
 import { RoomEnvironment } from './assets/vendor/three/examples/jsm/RoomEnvironment.js';
-import { models } from './models-data.js?v=3d-21';
+import { models } from './models-data-v22.js';
 
 // El visor solo carga un modelo. Sus recursos se liberan al cambiar de pieza.
 const stage = document.querySelector('#model-stage');
@@ -72,6 +72,13 @@ function visibleModels() {
 
 function refreshLabels() {
   const text = labels[language];
+  document.querySelectorAll('#model-project option').forEach(option => {
+    option.textContent = option.value === 'all'
+      ? (language === 'en' ? 'All projects' : 'Todos los proyectos')
+      : option.value === 'nordico'
+        ? (language === 'en' ? 'Norse project' : 'Nórdico')
+        : projectNames[option.value] || option.value;
+  });
   document.title = `${language === 'en' ? '3D art' : 'Arte 3D'} — Jose Manuel Pastor González`;
   document.querySelector('#model-name').textContent = selected.title[language];
   document.querySelector('#model-counter').textContent =
@@ -118,7 +125,7 @@ function buildGallery() {
     button.className = 'model-card';
     button.dataset.project = model.project;
     const image = document.createElement('img');
-    image.src = `${model.poster}?v=3d-21`;
+    image.src = `${model.poster}?v=3d-22`;
     image.width = image.height = 600;
     image.loading = 'lazy';
     button.append(image, document.createElement('span'));
@@ -200,7 +207,7 @@ async function applyTextures(root, model) {
       }
       for (const [slot, url] of Object.entries(maps)) {
         if (!texturePromises.has(url)) {
-          texturePromises.set(url, loader.loadAsync(`${url}?v=3d-21`).then((texture) => {
+          texturePromises.set(url, loader.loadAsync(`${url}?v=3d-22`).then((texture) => {
             // Estas imágenes son las originales para las UV del FBX, no imágenes
             // empaquetadas por el exportador GLTF; mantienen la orientación vertical.
             texture.flipY = true;
@@ -263,7 +270,7 @@ async function selectModel(model) {
     document.querySelector('#model-project').value = 'all';
     gallery.querySelectorAll('.model-card').forEach(card => { card.hidden = false; });
   }
-  poster.src = `${model.poster}?v=3d-21`;
+  poster.src = `${model.poster}?v=3d-22`;
   poster.hidden = false;
   refreshLabels();
   if (!renderer) return;
@@ -271,7 +278,7 @@ async function selectModel(model) {
   setState('loading');
   let root;
   try {
-    const gltf = await new GLTFLoader().loadAsync(`${model.url}?v=3d-21`);
+    const gltf = await new GLTFLoader().loadAsync(`${model.url}?v=3d-22`);
     root = gltf.scene;
     const records = await applyTextures(root, model);
     if (request !== requestNumber) { disposeRoot(root); return; }
@@ -400,6 +407,15 @@ window.addEventListener('hashchange', () => {
 
 // Una sola escena WebGL; el filtro controla las miniaturas disponibles.
 const projectFilter = document.querySelector('#model-project');
+projectFilter.replaceChildren();
+for (const project of ['all', ...new Set(models.map(model => model.project))]) {
+  const option = document.createElement('option');
+  option.value = project;
+  option.textContent = project === 'all' ? 'Todos los proyectos' : projectNames[project] || project;
+  if (project === 'all') option.dataset.t = 'modelAllProjects';
+  if (project === 'nordico') option.dataset.t = 'modelNordic';
+  projectFilter.append(option);
+}
 projectFilter.addEventListener('change', () => {
   const project = projectFilter.value;
   gallery.querySelectorAll('.model-card').forEach((card) => {
@@ -416,6 +432,15 @@ for (const [id, direction] of [['gallery-prev', -1], ['gallery-next', 1]]) {
       behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   });
 }
+
+// La rueda sobre las miniaturas recorre la fila, sin desplazar la página.
+gallery.addEventListener('wheel', (event) => {
+  if (gallery.scrollWidth <= gallery.clientWidth) return;
+  if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+    event.preventDefault();
+    gallery.scrollLeft += event.deltaY * (event.deltaMode === 1 ? 16 : 1);
+  }
+}, { passive: false });
 
 buildGallery();
 refreshLabels();
