@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from './assets/vendor/three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from './assets/vendor/three/examples/jsm/loaders/GLTFLoader.js';
 import { RoomEnvironment } from './assets/vendor/three/examples/jsm/RoomEnvironment.js';
-import { models } from './models-data.js';
+import { models } from './models-data.js?v=3d-21';
 
 // El visor solo carga un modelo. Sus recursos se liberan al cambiar de pieza.
 const stage = document.querySelector('#model-stage');
@@ -48,7 +48,7 @@ const labels = {
     canvas: '3D model: drag to rotate, scroll to zoom. Camera buttons are also available.',
   },
 };
-const projectNames = { 'time-bender': 'Time Bender' };
+const projectNames = { 'time-bender': 'Time Bender', nordico: 'Nórdico' };
 
 let language = document.documentElement.lang === 'en' ? 'en' : 'es';
 let selected = models.find((model) => `#${model.id}` === location.hash) || models[0];
@@ -65,12 +65,17 @@ let previousTime = 0;
 let visible = true;
 let fittedDistance = 5;
 
+function visibleModels() {
+  const filter = document.querySelector('#model-project').value || 'all';
+  return models.filter(model => filter === 'all' || model.project === filter);
+}
+
 function refreshLabels() {
   const text = labels[language];
   document.title = `${language === 'en' ? '3D art' : 'Arte 3D'} — Jose Manuel Pastor González`;
   document.querySelector('#model-name').textContent = selected.title[language];
   document.querySelector('#model-counter').textContent =
-    `${String(models.indexOf(selected) + 1).padStart(2, '0')} / ${models.length} · ${projectNames[selected.project] || selected.project}`;
+    `${String(visibleModels().indexOf(selected) + 1).padStart(2, '0')} / ${visibleModels().length} · ${selected.project === 'nordico' && language === 'en' ? 'Norse project' : projectNames[selected.project] || selected.project}`;
   document.querySelector('#model-meta').textContent =
     `${selected.triangles.toLocaleString(language)} ${text.triangles} · ${text[selected.textureType]}`;
   poster.alt = selected.title[language];
@@ -113,18 +118,14 @@ function buildGallery() {
     button.className = 'model-card';
     button.dataset.project = model.project;
     const image = document.createElement('img');
-    image.src = model.poster;
+    image.src = `${model.poster}?v=3d-21`;
     image.width = image.height = 600;
     image.loading = 'lazy';
     button.append(image, document.createElement('span'));
     button.addEventListener('click', () => {
       history.replaceState(null, '', `${location.pathname}${location.search}#${model.id}`);
       selectModel(model);
-      if (window.innerWidth <= 600) {
-        document.querySelector('.model-heading-row').scrollIntoView({
-          behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start',
-        });
-      }
+
     });
     gallery.append(button);
   }
@@ -199,7 +200,7 @@ async function applyTextures(root, model) {
       }
       for (const [slot, url] of Object.entries(maps)) {
         if (!texturePromises.has(url)) {
-          texturePromises.set(url, loader.loadAsync(url).then((texture) => {
+          texturePromises.set(url, loader.loadAsync(`${url}?v=3d-21`).then((texture) => {
             // Estas imágenes son las originales para las UV del FBX, no imágenes
             // empaquetadas por el exportador GLTF; mantienen la orientación vertical.
             texture.flipY = true;
@@ -258,7 +259,11 @@ function applyMode() {
 
 async function selectModel(model) {
   selected = model;
-  poster.src = model.poster;
+  if (!visibleModels().includes(model)) {
+    document.querySelector('#model-project').value = 'all';
+    gallery.querySelectorAll('.model-card').forEach(card => { card.hidden = false; });
+  }
+  poster.src = `${model.poster}?v=3d-21`;
   poster.hidden = false;
   refreshLabels();
   if (!renderer) return;
@@ -266,7 +271,7 @@ async function selectModel(model) {
   setState('loading');
   let root;
   try {
-    const gltf = await new GLTFLoader().loadAsync(model.url);
+    const gltf = await new GLTFLoader().loadAsync(`${model.url}?v=3d-21`);
     root = gltf.scene;
     const records = await applyTextures(root, model);
     if (request !== requestNumber) { disposeRoot(root); return; }
@@ -295,7 +300,7 @@ function initializeRenderer() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x1a242e);
+  scene.background = new THREE.Color(0x243341);
   const pmrem = new THREE.PMREMGenerator(renderer);
   const room = new RoomEnvironment();
   scene.environment = pmrem.fromScene(room, 0.04).texture;
@@ -402,6 +407,7 @@ projectFilter.addEventListener('change', () => {
   });
   const first = models.find((model) => project === 'all' || model.project === project);
   if (first && project !== 'all' && selected.project !== project) selectModel(first);
+  refreshLabels();
   gallery.scrollTo({ left: 0, behavior: 'auto' });
 });
 for (const [id, direction] of [['gallery-prev', -1], ['gallery-next', 1]]) {

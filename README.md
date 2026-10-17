@@ -207,7 +207,7 @@ al abrir el HTML directamente con doble clic (`file://`).
 - `assets/vendor/three/`: Three.js 0.180.0 y módulos necesarios, con su licencia MIT.
   No depende de un CDN ni necesita compilarse para publicarlo en GitHub Pages.
 
-La galería contiene 14 modelos. Robot usa `robot_final` y `robot/pixeladas2`;
+La galería contiene 17 modelos. Robot usa `robot_final` y `robot/pixeladas2`;
 la rata normal se presenta sin texturas y la humanizada usa el FBX y los mapas
 del paquete Rata(1).zip; mano usa `Mano_final`. Se excluyen los FBX alternativos descartados y los
 proyectos MAX del paquete web. Cronometrita utiliza sus mapas originales porque
@@ -227,16 +227,22 @@ se aplica desplazamiento por height para no alterar la silueta de la obra. En la
 texturas pixelizadas se conserva el filtrado de ampliación sin suavizado.
 
 Las portadas se renderizan a partir de las mallas y sus UV, con la marca de agua
-incorporada. El visor muestra la misma marca como superposición, sin reducir otra
-vez su opacidad. Una marca superpuesta no impide extraer un modelo servido al
+incorporada. El visor y sus imágenes de carga no llevan marca de agua; las miniaturas 3D tampoco llevan marca; el arte 2D conserva la suya. Una marca superpuesta no impide extraer un modelo servido al
 navegador. Se mantienen los avisos de derechos del portfolio.
 
-La colección actual pertenece a Time Bender. La introducción abarca arte 3D de
+Las colecciones actuales son Time Bender (14 modelos) y Nórdico (3 modelos). La introducción abarca arte 3D de
 distintos proyectos. Las miniaturas forman una única fila horizontal desplazable
 en todos los tamaños, con flechas y selector de proyecto. Cada entrada de
 models-data.js tiene una clave project; al añadir otro proyecto, incorpora su
 opción en model-project y añade su nombre a projectNames en viewer3d.js.
 
-Pendiente: el proyecto nórdico se ha recibido principalmente en MAX. Para
-incorporar la escena, Garth y el barco, se necesitan exportaciones FBX o GLB
-con UV y materiales. Los originales MAX no se incluyen en la web.
+Nórdico incluye el barco vikingo, el cuerpo de Garth y el casco como piezas
+independientes, usando los FBX de obj y fbx.zip y las texturas Substance del
+paquete original. La escena completa sigue disponible únicamente en MAX y
+no se incluye en el visor. Los materiales sin uso del FBX no requieren mapas.
+
+Actualización de la página 3D: distribución de una pantalla (100dvh), visor
+integrado sin bordes y carrusel horizontal inferior. Verificado en Chromium
+a 1440×900, 1366×768, 390×844, 375×667 y 844×390, sin scroll vertical.
+Las referencias del visor llevan versión para evitar mezclar archivos antiguos
+de caché. Sustituir todos los archivos del ZIP al publicar, incluida assets.

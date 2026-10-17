@@ -16,7 +16,10 @@ function render() {
   document.querySelector(".menu-close")?.setAttribute("aria-label", t.menuClose);
   document.documentElement.lang = lang;
   document.querySelector("#language").value = lang;
-  document.querySelectorAll("[data-t]").forEach((el) => (el.innerHTML = t[el.dataset.t]));
+  document.querySelectorAll("[data-t]").forEach((el) => {
+    const text = t[el.dataset.t];
+    if (typeof text === "string") el.innerHTML = text;
+  });
   document.querySelectorAll("[data-alt]").forEach((el) => (el.alt = t[el.dataset.alt]));
   document.querySelector('meta[name="description"]').content = isJams
     ? t.jamMeta

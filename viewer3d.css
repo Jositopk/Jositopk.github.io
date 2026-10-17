@@ -1,142 +1,89 @@
-/* Visor 3D. Estilos aislados para no alterar las galerías y los diálogos. */
-.model-intro {
-  padding-top: 50px;
-  padding-bottom: 40px;
-}
-.model-intro h1 {
-  font-size: clamp(36px, 5vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
-  margin: 20px 0;
-}
-.model-intro-copy {
-  max-width: 760px;
-  color: var(--muted);
-  line-height: 1.8;
-}
-.model-section { padding-bottom: 80px; }
-.model-heading-row,
-.model-gallery-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-.model-heading-row h2 { font-size: clamp(24px, 4vw, 40px); margin: 8px 0 0; }
-.model-meta { color: var(--muted); font-size: 12px; text-align: right; }
-.model-workbench { border: 1px solid var(--line); background: var(--deep); }
-.model-toolbar,
-.model-controls,
-.model-camera-controls { display: flex; flex-wrap: wrap; gap: 8px; }
-.model-toolbar { padding: 14px; border-bottom: 1px solid var(--line); }
-.model-workbench button {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-  font-size: 12px;
-  padding: 11px 14px;
-  min-height: 44px;
-  cursor: pointer;
-}
-.model-workbench button:hover { border-color: var(--lime); }
-.model-workbench button[aria-pressed="true"] { background: var(--lime); color: var(--deep); border-color: var(--lime); }
-.model-workbench button:disabled { opacity: 0.45; cursor: wait; }
-.model-stage {
-  height: clamp(320px, 56vw, 560px);
-  position: relative;
+/* A single viewport: only the model strip scrolls. */
+body[data-page="art3d"] {
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
-  isolation: isolate;
-}
-#model-canvas { display: block; width: 100%; height: 100%; touch-action: none; }
-#model-canvas:focus-visible { outline: 2px solid var(--lime); outline-offset: -5px; }
-#model-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--deep); z-index: 1; }
-#model-poster[hidden] { display: none; }
-.model-watermark {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 2;
-}
-.model-stage[aria-busy="true"] .model-watermark,
-.model-stage[data-failed="true"] .model-watermark { visibility: hidden; }
-#model-status {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
-  z-index: 3;
-  width: fit-content;
-  max-width: calc(100% - 28px);
-  padding: 10px 14px;
-  background: var(--bg);
-  color: var(--lime);
-  font-size: 12px;
-  line-height: 1.6;
-}
-#model-status:empty { display: none; }
-#model-status button { margin-left: 12px; }
-.model-controls { justify-content: space-between; align-items: center; padding: 14px; border-top: 1px solid var(--line); }
-.model-instructions { margin-top: 16px; color: var(--muted); font-size: 12px; line-height: 1.8; }
-.model-wire-note { color: var(--muted); font-size: 11px; }
-.model-gallery-heading { margin: 45px 0 20px; }
-.model-gallery-heading h2 { font-size: clamp(20px, 3vw, 28px); margin: 0; }
-.model-gallery-heading span { color: var(--lime); font-size: 11px; }
-.model-gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-.model-card {
-  padding: 0;
-  text-align: left;
-  background: var(--deep);
-  color: var(--text);
-  border: 1px solid var(--line);
-  font: inherit;
-  cursor: pointer;
-  min-width: 0;
-}
-.model-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
-.model-card span { display: block; padding: 12px; font-size: 12px; }
-.model-card[aria-pressed="true"] { border: 2px solid var(--lime); }
-.model-card[aria-pressed="true"] span { background: var(--lime); color: var(--deep); }
-.model-card:hover { border-color: var(--lime); }
-@media (max-width: 850px) {
-  .model-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-@media (max-width: 600px) {
-  .model-intro { padding-top: 30px; }
-  .model-heading-row { align-items: start; flex-direction: column; gap: 4px; }
-  .model-meta { text-align: left; margin: 0; }
-  .model-toolbar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px; }
-  .model-toolbar button:last-child { grid-column: 1 / -1; }
-  .model-controls { padding: 10px; }
-  .model-camera-controls { width: 100%; }
-  .model-camera-controls button { flex: 1; }
-  .model-camera-controls button:last-child { flex-basis: 100%; }
-  .model-gallery { display: flex; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 14px; scrollbar-color: var(--lime) var(--deep); }
-  .model-card { flex: 0 0 155px; scroll-snap-align: start; }
-  .model-gallery-heading { align-items: start; flex-direction: column; gap: 8px; }
-}
-
-/* Una fila desplazable en escritorio, tablet y móvil. */
-.model-gallery {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding: 4px 2px 16px;
-  scrollbar-color: var(--lime) var(--deep);
-  scrollbar-width: auto;
+  flex-direction: column;
+  background: var(--bg);
 }
-.model-card { flex: 0 0 clamp(155px, 18vw, 205px); scroll-snap-align: start; }
+body[data-page="art3d"] > header { flex: 0 0 70px; height: 70px; min-height: 70px; border: 0; }
+#main { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 4%; }
+.model-intro { display: flex; align-items: center; gap: 24px; flex: 0 0 46px; }
+.model-intro p { color: var(--muted); font-size: 12px; margin: 0; }
+.model-intro .art-tabs { margin: 0; gap: 18px; }
+.model-intro .art-tabs a { padding: 5px 0; font-size: 13px; }
+.model-section { flex: 1; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 44px 128px; gap: 8px; }
+.model-workbench { position: relative; min-height: 0; }
+.model-stage { position: absolute; inset: 0; isolation: isolate; }
+#model-canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+#model-canvas:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
+#model-poster { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: contain; z-index: 1; background: var(--bg); }
+#model-poster[hidden] { display: none; }
+.model-heading-row { position: absolute; top: 12px; left: 0; z-index: 2; pointer-events: none; }
+.model-heading-row .eyebrow { font-size: 10px; margin: 0 0 4px; }
+.model-heading-row h2 { font-size: clamp(20px, 3vw, 34px); margin: 0; line-height: 1.15; }
+.model-meta { font-size: 10px; color: var(--muted); margin: 6px 0; }
+.model-toolbar { position: absolute; top: 12px; right: 0; z-index: 3; display: flex; gap: 5px; }
+.model-workbench button, .model-project-filter button, .model-project-filter select {
+  font: inherit; font-size: 11px; color: var(--text); background: var(--bg);
+  border: 1px solid transparent; border-radius: 5px; min-height: 36px; padding: 7px 10px; cursor: pointer;
+}
+.model-workbench button:hover, .model-project-filter button:hover { color: var(--lime); }
+.model-workbench button[aria-pressed="true"] { color: var(--deep); background: var(--lime); }
+.model-workbench button:disabled { opacity: .45; cursor: wait; }
+.model-controls { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; display: flex; justify-content: space-between; gap: 6px; }
+.model-camera-controls { display: flex; gap: 4px; }
+#model-status { position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); z-index: 4; color: var(--lime); background: var(--bg); font-size: 12px; padding: 8px; max-width: 90%; text-align: center; }
+#model-status:empty { display: none; }
+.model-project-filter { display: flex; align-items: center; gap: 10px; }
+.model-project-filter label { font-size: 11px; color: var(--muted); }
+.model-project-filter select { border-color: var(--line); width: 230px; }
+#gallery-prev { margin-left: auto; }
+.model-project-filter button { font-size: 20px; padding: 0 10px; }
+.model-gallery { min-height: 0; display: flex; gap: 12px; overflow-x: auto; overflow-y: hidden; padding: 2px 0 8px; scroll-snap-type: x proximity; scrollbar-color: var(--lime) var(--bg); scrollbar-width: thin; }
+.model-card { flex: 0 0 126px; min-width: 0; padding: 0; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; scroll-snap-align: start; }
 .model-card[hidden] { display: none; }
-.model-project-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
-.model-project-filter select, .model-project-filter button {
-  background: var(--deep); color: var(--text); border: 1px solid var(--line);
-  padding: 10px 14px; min-height: 44px; font: inherit;
+.model-card img { display: block; width: 100%; height: 82px; object-fit: contain; }
+.model-card span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 5px 2px; font-size: 10px; }
+.model-card[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); }
+.model-card:hover { color: var(--text); }
+.model-footer { display: flex; justify-content: space-between; gap: 10px; flex: 0 0 26px; align-items: center; font-size: 9px; color: var(--muted); padding: 0; margin: 0; border: 0; }
+@media (max-width: 700px) {
+  body[data-page="art3d"] > header { flex-basis: 60px; height: 60px; min-height: 60px; padding-top: 4px; padding-bottom: 4px; }
+  #main { padding: 0 4%; }
+  .model-intro { flex-basis: 34px; }
+  .model-intro p { display: none; }
+  .model-section { grid-template-rows: minmax(0, 1fr) 40px 102px; gap: 4px; }
+  .model-toolbar { top: 70px; left: 0; right: auto; }
+  .model-workbench button { font-size: 10px; padding: 6px 7px; min-height: 32px; }
+  .model-meta { font-size: 9px; }
+  .model-card { flex-basis: 104px; }
+  .model-card img { height: 62px; }
+  .model-project-filter { gap: 5px; }
+  .model-project-filter select { width: 185px; }
+  .model-footer { font-size: 8px; flex-basis: 22px; }
+  .model-footer span { display: none; }
 }
-.model-project-filter select { flex: 1; max-width: 400px; min-width: 180px; }
-.model-project-filter button { cursor: pointer; }
-.model-project-filter button:hover { border-color: var(--lime); }
+@media (max-height: 500px) {
+  body[data-page="art3d"] > header { flex-basis: 48px; height: 48px; min-height: 48px; }
+  .model-intro { display: none; }
+  .model-section { grid-template-rows: minmax(0, 1fr) 34px 82px; gap: 3px; }
+  .model-card { flex-basis: 94px; }
+  .model-card img { height: 48px; }
+  .model-toolbar { top: 4px; left: auto; right: 0; }
+  .model-heading-row { top: 4px; }
+  .model-heading-row h2 { font-size: 18px; }
+  .model-meta { display: none; }
+  .model-workbench button { min-height: 28px; padding: 4px 6px; font-size: 9px; }
+  .model-footer { flex-basis: 18px; }
+}
+/* Override the shared site's tall footer; reserve space for overlay controls. */
+body[data-page="art3d"] .model-footer { min-height: 0; }
+.model-stage { inset: 42px 0 40px; }
+@media (max-width: 700px) {
+  .model-stage { inset: 106px 0 38px; }
+}
+@media (max-height: 500px) {
+  .model-stage { inset: 38px 0 28px; }
+}

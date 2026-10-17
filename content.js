@@ -500,3 +500,15 @@ Object.assign(translations.en, {
 // Navegación por proyectos del archivo 3D.
 Object.assign(translations.es, { modelProject: "Proyecto", modelAllProjects: "Todos los proyectos", modelBrowse: "Desplázate para ver más modelos →" });
 Object.assign(translations.en, { modelProject: "Project", modelAllProjects: "All projects", modelBrowse: "Scroll to explore more models →" });
+
+Object.assign(translations.es, { modelNordic: "Nórdico" });
+Object.assign(translations.en, { modelNordic: "Norse project" });
+
+Object.assign(translations.es, {
+  modelShortIntro: "Personajes, objetos e ideas en tres dimensiones.",
+  modelHint: "Arrastra para girar · Pellizca o usa la rueda para acercar"
+});
+Object.assign(translations.en, {
+  modelShortIntro: "Characters, objects and ideas in three dimensions.",
+  modelHint: "Drag to rotate · Pinch or scroll to zoom"
+});

@@ -12,15 +12,15 @@
       Arte 3D — Jose Manuel Pastor González
     </title>
     <link rel="icon" href="assets/favicon.svg">
-    <link rel="stylesheet" href="styles.css">
-    <script src="content.js" defer>
+    <link rel="stylesheet" href="styles.css?v=3d-21">
+    <script src="content.js?v=3d-21" defer>
     </script>
-    <link rel="stylesheet" href="viewer3d.css">
+    <link rel="stylesheet" href="viewer3d.css?v=3d-21">
     <script type="importmap">
       {"imports":{"three":"./assets/vendor/three/build/three.module.js"}}
     </script>
-    <script type="module" src="viewer3d.js"></script>
-    <script src="script.js" defer>
+    <script type="module" src="viewer3d.js?v=3d-21"></script>
+    <script src="script.js?v=3d-21" defer>
     </script>
   </head>
   <body data-page="art3d">
@@ -78,31 +78,30 @@
       <p class="mobile-menu-note">JM / PORTFOLIO</p>
     </dialog>
     <main id="main">
-      <section class="wrap model-intro">
-        <a class="back-link" href="index.html#art" data-t="backPortfolio">Volver al portfolio</a>
+      <section class="model-intro" aria-label="Arte 3D">
         <nav class="art-tabs" aria-label="Arte / Art">
           <a href="art.html" data-t="gallery2D">Arte 2D</a>
           <a href="arte3d.html" aria-current="page" data-t="gallery3D">Arte 3D</a>
         </nav>
-        <p class="eyebrow" data-t="modelArchive">ARCHIVO / ARTE 3D</p>
-        <h1 data-t="modelHeading">Mis ideas,<br>desde todos los ángulos.</h1>
-        <p class="model-intro-copy" data-t="modelIntro">Personajes, objetos y escenarios: mis ideas toman forma en 3D. Explora trabajos de distintos proyectos, acércate a sus detalles y descubre cómo están construidos.</p>
+        <p data-t="modelShortIntro">Personajes, objetos e ideas en tres dimensiones.</p>
       </section>
-      <section class="wrap model-section" aria-labelledby="model-name">
-        <div class="model-heading-row">
-          <div><p class="eyebrow" id="model-counter"></p><h2 id="model-name">Robot</h2></div>
-          <p class="model-meta" id="model-meta"></p>
-        </div>
+      <section class="model-section" aria-labelledby="model-name">
         <div class="model-workbench">
+          <div class="model-heading-row">
+            <div>
+              <p class="eyebrow" id="model-counter"></p>
+              <h2 id="model-name">Robot</h2>
+            </div>
+            <p class="model-meta" id="model-meta"></p>
+          </div>
           <div class="model-toolbar" role="group" aria-label="Visualización / Display">
             <button type="button" data-mode="textured" aria-pressed="true" data-t="modelTextured">Texturizado</button>
             <button type="button" data-mode="wire" aria-pressed="false">Wireframe</button>
             <button type="button" data-mode="overlay" aria-pressed="false" data-t="modelOverlay">Textura + wireframe</button>
           </div>
           <div id="model-stage" class="model-stage" aria-busy="true">
-            <img id="model-poster" src="assets/models/robot/cover.webp" alt="Robot" width="600" height="600">
+            <img id="model-poster" src="assets/models/robot/cover.webp?v=3d-21" alt="Robot" width="600" height="600">
             <canvas id="model-canvas" tabindex="0" aria-label="Visor 3D interactivo"></canvas>
-            <img class="model-watermark" src="assets/model-watermark.png" alt="" aria-hidden="true">
             <div id="model-status" role="status" aria-live="polite"></div>
           </div>
           <div class="model-controls">
@@ -116,14 +115,12 @@
             </div>
           </div>
         </div>
-        <p class="model-instructions" data-t="modelInstructions">Arrastra para girar · Rueda o pellizco para acercar · Botón derecho o dos dedos para desplazar. El giro se reanuda tras 5 segundos sin interacción.</p>
-        <p class="model-wire-note" data-t="modelWireNote">Wireframe muestra los triángulos de la malla exportada.</p>
-        <div class="model-gallery-heading"><h2 data-t="modelCollection">Explora la colección</h2><span data-t="modelBrowse">Desplázate para ver más modelos →</span></div>
         <div class="model-project-filter">
           <label for="model-project" data-t="modelProject">Proyecto</label>
           <select id="model-project">
             <option value="all" data-t="modelAllProjects">Todos los proyectos</option>
             <option value="time-bender">Time Bender · Game jam</option>
+            <option value="nordico" data-t="modelNordic">Nórdico</option>
           </select>
           <button type="button" id="gallery-prev" aria-label="Modelos anteriores / Previous models">←</button>
           <button type="button" id="gallery-next" aria-label="Más modelos / More models">→</button>
@@ -131,35 +128,7 @@
         <div id="model-gallery" class="model-gallery" aria-label="Modelos / Models"></div>
         <noscript><p>Activa JavaScript para utilizar el visor 3D. / Enable JavaScript to use the 3D viewer.</p></noscript>
       </section>
-      <footer class="wrap">
-        <a class="brand" href="index.html" aria-label="José Manuel">
-          <img src="assets/logo.png" alt="" width="40" height="40">
-          JM
-        </a>
-        <p data-t="footer">
-          Programar, crear y seguir aprendiendo.
-        </p>
-        <div class="social-links">
-          <a href="https://github.com/Jositopk" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jose-manuel-pastor-gonzález-b341253b3/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
-        <a href="#" data-t="top">
-          Volver arriba
-        </a>
-        <p class="rights-notice" data-t="rightsNotice">
-          © 2026 Jose Manuel Pastor González. Derechos reservados sobre mis obras
-          y aportaciones. No se autoriza su reutilización sin permiso, salvo los
-          usos permitidos por la ley. Los elementos de terceros pertenecen a sus titulares.
-        </p>
-      </footer>
+      <footer class="model-footer">© 2026 Jose Manuel Pastor González <span data-t="modelHint">Arrastra para girar · Pellizca o usa la rueda para acercar</span></footer>
     </main>
   </body>
 </html>

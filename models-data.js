@@ -309,5 +309,99 @@ export const models = [
     "textureType": "supplied",
     "triangles": 116,
     "project": "time-bender"
+  },
+  {
+    "id": "barco-vikingo",
+    "source": "barco_vikingo.fbx",
+    "title": {
+      "es": "Barco vikingo",
+      "en": "Viking ship"
+    },
+    "url": "assets/models/barco-vikingo/model.glb",
+    "poster": "assets/models/barco-vikingo/cover.webp",
+    "textures": {
+      "default": {
+        "normalMap": "assets/models/barco-vikingo/default-normalMap.png",
+        "aoMap": "assets/models/barco-vikingo/default-aoMap.png",
+        "map": "assets/models/barco-vikingo/default-map.png",
+        "metalnessMap": "assets/models/barco-vikingo/default-metalnessMap.png",
+        "roughnessMap": "assets/models/barco-vikingo/default-roughnessMap.png"
+      }
+    },
+    "textureType": "original",
+    "triangles": 1336,
+    "project": "nordico"
+  },
+  {
+    "id": "garth",
+    "source": "Cuerpo_Garth2024_UV.fbx",
+    "title": {
+      "es": "Garth · Personaje",
+      "en": "Garth · Character"
+    },
+    "url": "assets/models/garth/model.glb",
+    "poster": "assets/models/garth/cover.webp",
+    "textures": {
+      "51": {
+        "map": "assets/models/garth/51-map.png",
+        "metalnessMap": "assets/models/garth/51-metalnessMap.png",
+        "roughnessMap": "assets/models/garth/51-roughnessMap.png",
+        "aoMap": "assets/models/garth/51-aoMap.png",
+        "normalMap": "assets/models/garth/51-normalMap.png"
+      },
+      "52": {
+        "roughnessMap": "assets/models/garth/52-roughnessMap.png",
+        "normalMap": "assets/models/garth/52-normalMap.png",
+        "map": "assets/models/garth/52-map.png",
+        "metalnessMap": "assets/models/garth/52-metalnessMap.png",
+        "aoMap": "assets/models/garth/52-aoMap.png"
+      },
+      "64": {
+        "roughnessMap": "assets/models/garth/64-roughnessMap.png",
+        "aoMap": "assets/models/garth/64-aoMap.png",
+        "map": "assets/models/garth/64-map.png",
+        "metalnessMap": "assets/models/garth/64-metalnessMap.png",
+        "normalMap": "assets/models/garth/64-normalMap.png"
+      },
+      "76": {
+        "metalnessMap": "assets/models/garth/76-metalnessMap.png",
+        "roughnessMap": "assets/models/garth/76-roughnessMap.png",
+        "aoMap": "assets/models/garth/76-aoMap.png",
+        "normalMap": "assets/models/garth/76-normalMap.png",
+        "map": "assets/models/garth/76-map.png"
+      },
+      "190": {
+        "roughnessMap": "assets/models/garth/190-roughnessMap.png",
+        "normalMap": "assets/models/garth/190-normalMap.png",
+        "map": "assets/models/garth/190-map.png",
+        "aoMap": "assets/models/garth/190-aoMap.png",
+        "metalnessMap": "assets/models/garth/190-metalnessMap.png"
+      }
+    },
+    "textureType": "original",
+    "triangles": 4808,
+    "project": "nordico"
+  },
+  {
+    "id": "casco-garth",
+    "source": "casco_Garth2024_uv.fbx",
+    "title": {
+      "es": "Casco de Garth",
+      "en": "Garth’s helmet"
+    },
+    "url": "assets/models/casco-garth/model.glb",
+    "poster": "assets/models/casco-garth/cover.webp",
+    "textures": {
+      "default": {
+        "normalMap": "assets/models/casco-garth/default-normalMap.png",
+        "aoMap": "assets/models/casco-garth/default-aoMap.png",
+        "map": "assets/models/casco-garth/default-map.png",
+        "metalnessMap": "assets/models/casco-garth/default-metalnessMap.png",
+        "roughnessMap": "assets/models/casco-garth/default-roughnessMap.png"
+      }
+    },
+    "textureType": "original",
+    "triangles": 744,
+    "project": "nordico"
   }
 ];
