@@ -253,3 +253,11 @@ desde el catálogo y contiene Time Bender y Nórdico. Los archivos viewer3d-v22
 y models-data-v22 son los utilizados por arte3d.html. Ninguna portada ni
 miniatura 3D lleva marca. El arte 2D se conserva sin cambios.
 La esquina inferior derecha muestra 3D / 22 para identificar esta revisión.
+
+Versión 23 (visor): el visor ocupa toda la pantalla bajo la cabecera; panel,
+botones, selector de proyecto y carrusel van superpuestos. Botones con el mismo
+relleno que Arte 2D (12px 16px). Iluminación reducida (exposición 0.9, entorno
+0.55, hemisférica 0.9, direccional 1.3). Encuadre automático por dimensiones
+reales del modelo con desplazamiento de proyección (setViewOffset), de modo que
+el modelo conserva su posición (65 % derecho en escritorio) y el carrusel puede
+tapar un poco su base. Al redimensionar se conserva el giro y zoom del usuario.

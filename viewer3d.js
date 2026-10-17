@@ -142,18 +142,60 @@ function pauseRotation() {
   pausedUntil = performance.now() + 5000;
 }
 
-function fitCamera() {
+// Zona del canvas que queda libre de paneles superpuestos. El modelo se centra
+// ahí (en escritorio: el 65 % derecho, por encima del selector y el carrusel).
+function freeArea() {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  const rect = stage.getBoundingClientRect();
+  const filter = document.querySelector('.model-project-filter').getBoundingClientRect();
+  const panel = document.querySelector('.model-panel').getBoundingClientRect();
+  const left = innerWidth > 700 ? w * 0.35 : 0;
+  // Permitimos que el carrusel tape un poco la base del modelo.
+  const bottom = Math.min(h, filter.top - rect.top + 24);
+  const top = innerWidth > 700 ? 0 : Math.max(0, panel.bottom - rect.top);
+  return { w, h, left, top, bottom };
+}
+
+// Desplaza la proyección para que el centro del modelo caiga en la zona libre.
+function applyViewOffset(area) {
+  const freeW = area.w - area.left, freeH = Math.max(40, area.bottom - area.top);
+  const shiftX = area.left + freeW / 2 - area.w / 2;
+  const shiftY = area.top + freeH / 2 - area.h / 2;
+  camera.setViewOffset(area.w, area.h, -shiftX, -shiftY, area.w, area.h);
+  return { freeW, freeH };
+}
+
+// Encuadre automático: usa las dimensiones reales de la geometría. Como el modelo
+// gira alrededor del eje vertical, se mide su radio horizontal máximo y su altura.
+function fitCamera(keepDirection = false) {
   if (!currentRoot) return;
-  const sphere = new THREE.Box3().setFromObject(currentRoot).getBoundingSphere(new THREE.Sphere());
-  const vertical = THREE.MathUtils.degToRad(camera.fov);
-  const horizontal = 2 * Math.atan(Math.tan(vertical / 2) * camera.aspect);
-  fittedDistance = sphere.radius / Math.sin(Math.min(vertical, horizontal) / 2) * 1.06;
-  controls.target.copy(sphere.center);
-  camera.position.copy(new THREE.Vector3(4, 2.5, 5).normalize().multiplyScalar(fittedDistance).add(sphere.center));
-  controls.minDistance = sphere.radius * 0.45;
-  controls.maxDistance = fittedDistance * 3;
+  const area = freeArea();
+  if (!area.w || !area.h) return;
+  const { freeW, freeH } = applyViewOffset(area);
+  const box = new THREE.Box3().setFromObject(currentRoot);
+  const center = box.getCenter(new THREE.Vector3());
+  let radius = 0;
+  for (const x of [box.min.x, box.max.x]) {
+    for (const z of [box.min.z, box.max.z]) radius = Math.max(radius, Math.hypot(x - center.x, z - center.z));
+  }
+  const halfHeight = (box.max.y - box.min.y) / 2;
+  const fill = 0.94; // fracción de la zona libre que ocupa el modelo
+  const tanV = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * (freeH / area.h) * fill;
+  const tanH = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * (freeW / area.h) * fill;
+  const sinH = tanH / Math.sqrt(1 + tanH * tanH);
+  const newDistance = Math.max(radius / sinH, halfHeight / tanV + radius * 0.85, 0.05);
+  const oldDistance = camera.position.distanceTo(controls.target);
+  const direction = keepDirection && fittedDistance > 0 && oldDistance > 0
+    ? camera.position.clone().sub(controls.target).normalize()
+    : new THREE.Vector3(4, 2.5, 5).normalize();
+  const zoomRatio = keepDirection && fittedDistance > 0 ? oldDistance / fittedDistance : 1;
+  fittedDistance = newDistance;
+  controls.target.copy(center);
+  camera.position.copy(direction.multiplyScalar(newDistance * zoomRatio).add(center));
+  controls.minDistance = Math.max(radius, halfHeight) * 0.45;
+  controls.maxDistance = newDistance * 3;
   controls.update();
-  controls.saveState();
+  if (!keepDirection) controls.saveState();
 }
 
 function disposeRoot(root) {
@@ -305,16 +347,17 @@ function initializeRenderer() {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.1;
+  renderer.toneMappingExposure = 0.9;
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x243341);
   const pmrem = new THREE.PMREMGenerator(renderer);
   const room = new RoomEnvironment();
   scene.environment = pmrem.fromScene(room, 0.04).texture;
+  scene.environmentIntensity = 0.55;
   room.dispose();
   pmrem.dispose();
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x687580, 2));
-  const key = new THREE.DirectionalLight(0xffffff, 2.5);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x687580, 0.9));
+  const key = new THREE.DirectionalLight(0xffffff, 1.3);
   key.position.set(3, 5, 4);
   scene.add(key);
   camera = new THREE.PerspectiveCamera(38, 1, 0.01, 100);
@@ -338,8 +381,8 @@ function initializeRenderer() {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    // Reencuadra al cambiar de orientación para evitar recortar el modelo.
-    fitCamera();
+    // Reencuadra al cambiar el tamaño, conservando el giro y zoom del usuario.
+    fitCamera(true);
   };
   new ResizeObserver(resize).observe(stage);
   resize();
@@ -395,7 +438,7 @@ document.querySelector('#model-left').addEventListener('click', () => orbit(-0.2
 document.querySelector('#model-right').addEventListener('click', () => orbit(0.25));
 document.querySelector('#model-zoom-in').addEventListener('click', () => zoom(0.8));
 document.querySelector('#model-zoom-out').addEventListener('click', () => zoom(1.25));
-document.querySelector('#model-reset').addEventListener('click', () => { pauseRotation(); fitCamera(); });
+document.querySelector('#model-reset').addEventListener('click', () => { pauseRotation(); fitCamera(false); });
 document.addEventListener('portfolio-language', (event) => {
   language = event.detail;
   refreshLabels();
